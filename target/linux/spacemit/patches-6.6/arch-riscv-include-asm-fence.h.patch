@@ -1,0 +1,24 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/asm/fence.h b/arch/riscv/include/asm/fence.h
+--- a/arch/riscv/include/asm/fence.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/asm/fence.h	2025-05-18 01:44:32.828649829 +0800
+@@ -1,12 +1,18 @@
+ #ifndef _ASM_RISCV_FENCE_H
+ #define _ASM_RISCV_FENCE_H
+ 
++#define RISCV_FENCE_ASM(p, s)		"\tfence " #p "," #s "\n"
++#define RISCV_FENCE(p, s) \
++	({ __asm__ __volatile__ (RISCV_FENCE_ASM(p, s) : : : "memory"); })
++
+ #ifdef CONFIG_SMP
+-#define RISCV_ACQUIRE_BARRIER		"\tfence r , rw\n"
+-#define RISCV_RELEASE_BARRIER		"\tfence rw,  w\n"
++#define RISCV_ACQUIRE_BARRIER		RISCV_FENCE_ASM(r, rw)
++#define RISCV_RELEASE_BARRIER		RISCV_FENCE_ASM(rw, w)
++#define RISCV_FULL_BARRIER		RISCV_FENCE_ASM(rw, rw)
+ #else
+ #define RISCV_ACQUIRE_BARRIER
+ #define RISCV_RELEASE_BARRIER
++#define RISCV_FULL_BARRIER
+ #endif
+ 
+ #endif	/* _ASM_RISCV_FENCE_H */

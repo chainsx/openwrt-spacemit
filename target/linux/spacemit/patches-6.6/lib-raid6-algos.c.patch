@@ -1,0 +1,33 @@
+diff -Nuar -r --no-dereference a/lib/raid6/algos.c b/lib/raid6/algos.c
+--- a/lib/raid6/algos.c	2024-11-22 22:38:37.000000000 +0800
++++ b/lib/raid6/algos.c	2025-05-18 01:44:51.039672404 +0800
+@@ -18,6 +18,9 @@
+ #else
+ #include <linux/module.h>
+ #include <linux/gfp.h>
++#include <linux/platform_device.h>
++#include <linux/of.h>
++#include <linux/async.h>
+ /* In .bss so it's zeroed */
+ const char raid6_empty_zero_page[PAGE_SIZE] __attribute__((aligned(256)));
+ EXPORT_SYMBOL(raid6_empty_zero_page);
+@@ -289,7 +292,18 @@
+ 	do { } while (0);
+ }
+ 
+-subsys_initcall(raid6_select_algo);
++static void __init raid6_select_algo_wrapper(void *data, long long unsigned int arg)
++{
++	raid6_select_algo();
++}
++
++static int __init raid6_select_algo_async_init(void)
++{
++	async_schedule(raid6_select_algo_wrapper, NULL);
++	return 0;
++}
++
++subsys_initcall(raid6_select_algo_async_init);
+ module_exit(raid6_exit);
+ MODULE_LICENSE("GPL");
+ MODULE_DESCRIPTION("RAID6 Q-syndrome calculations");

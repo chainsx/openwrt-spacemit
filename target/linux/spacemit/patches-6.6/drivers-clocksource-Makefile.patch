@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/clocksource/Makefile b/drivers/clocksource/Makefile
+--- a/drivers/clocksource/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/clocksource/Makefile	2025-05-18 01:44:34.986652519 +0800
+@@ -59,6 +59,7 @@
+ obj-$(CONFIG_SPRD_TIMER)	+= timer-sprd.o
+ obj-$(CONFIG_NPCM7XX_TIMER)	+= timer-npcm7xx.o
+ obj-$(CONFIG_RDA_TIMER)		+= timer-rda.o
++obj-$(CONFIG_SPACEMIT_K1X_TIMER)	+= timer-k1x.o
+ 
+ obj-$(CONFIG_ARC_TIMERS)		+= arc_timer.o
+ obj-$(CONFIG_ARM_ARCH_TIMER)		+= arm_arch_timer.o

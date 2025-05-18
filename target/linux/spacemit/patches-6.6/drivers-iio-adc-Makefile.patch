@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+--- a/drivers/iio/adc/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/iio/adc/Makefile	2025-05-18 01:44:39.449658068 +0800
+@@ -129,3 +129,4 @@
+ obj-$(CONFIG_XILINX_XADC) += xilinx-xadc.o
+ obj-$(CONFIG_XILINX_AMS) += xilinx-ams.o
+ obj-$(CONFIG_SD_ADC_MODULATOR) += sd_adc_modulator.o
++obj-$(CONFIG_SPACEMIT_P1_ADC) += k1x_adc.o

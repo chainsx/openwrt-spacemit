@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/drivers/bluetooth/btrtl.c b/drivers/bluetooth/btrtl.c
+--- a/drivers/bluetooth/btrtl.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/bluetooth/btrtl.c	2025-05-18 01:44:34.507651922 +0800
+@@ -398,7 +398,7 @@
+ 
+ 	skb = __hci_cmd_sync(hdev, 0xfc61, sizeof(*cmd), cmd,
+ 			     HCI_INIT_TIMEOUT);
+-	if (IS_ERR(skb)) {
++	if (IS_ERR_OR_NULL(skb)) {
+ 		err = PTR_ERR(skb);
+ 		rtl_dev_err(hdev, "RTL: Read reg16 failed (%d)", err);
+ 		return err;

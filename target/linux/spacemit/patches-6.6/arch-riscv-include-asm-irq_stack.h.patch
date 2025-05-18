@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/asm/irq_stack.h b/arch/riscv/include/asm/irq_stack.h
+--- a/arch/riscv/include/asm/irq_stack.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/asm/irq_stack.h	2025-05-18 01:44:32.831649833 +0800
+@@ -12,6 +12,9 @@
+ 
+ DECLARE_PER_CPU(ulong *, irq_stack_ptr);
+ 
++asmlinkage void call_on_irq_stack(struct pt_regs *regs,
++				  void (*func)(struct pt_regs *));
++
+ #ifdef CONFIG_VMAP_STACK
+ /*
+  * To ensure that VMAP'd stack overflow detection works correctly, all VMAP'd

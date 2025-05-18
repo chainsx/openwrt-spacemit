@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/Documentation/process/index.rst b/Documentation/process/index.rst
+--- a/Documentation/process/index.rst	2024-11-22 22:38:37.000000000 +0800
++++ b/Documentation/process/index.rst	2025-05-18 01:44:28.930644962 +0800
+@@ -71,7 +71,7 @@
+    volatile-considered-harmful
+    botching-up-ioctls
+    clang-format
+-   ../riscv/patch-acceptance
++   ../arch/riscv/patch-acceptance
+    ../core-api/unaligned-memory-access
+ 
+ .. only::  subproject and html

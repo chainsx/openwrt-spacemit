@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+--- a/arch/riscv/kernel/sbi.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/sbi.c	2025-05-18 01:44:32.886649902 +0800
+@@ -460,6 +460,15 @@
+ }
+ EXPORT_SYMBOL(sbi_remote_hfence_vvma);
+ 
++#if defined(CONFIG_SOC_SPACEMIT_K1PRO) || defined(CONFIG_SOC_SPACEMIT_K1X)
++void sbi_flush_local_dcache_all(void)
++{
++	sbi_ecall(SBI_EXT_BASE, SBI_EXT_BASE_FLUSH_CACHE_ALL, 0,
++			0, 0, 0, 0, 0);
++}
++EXPORT_SYMBOL(sbi_flush_local_dcache_all);
++#endif
++
+ /**
+  * sbi_remote_hfence_vvma_asid() - Execute HFENCE.VVMA instructions on given
+  * remote harts for current guest virtual address range belonging to a specific

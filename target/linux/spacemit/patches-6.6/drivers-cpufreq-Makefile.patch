@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
+--- a/drivers/cpufreq/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/cpufreq/Makefile	2025-05-18 01:44:35.091652649 +0800
+@@ -107,3 +107,4 @@
+ obj-$(CONFIG_SH_CPU_FREQ)		+= sh-cpufreq.o
+ obj-$(CONFIG_SPARC_US2E_CPUFREQ)	+= sparc-us2e-cpufreq.o
+ obj-$(CONFIG_SPARC_US3_CPUFREQ)		+= sparc-us3-cpufreq.o
++obj-$(CONFIG_SPACEMIT_K1X_CPUFREQ)	+= spacemit-cpufreq.o

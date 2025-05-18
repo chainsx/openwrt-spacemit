@@ -1,0 +1,27 @@
+diff -Nuar -r --no-dereference a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+--- a/drivers/pwm/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/pwm/Kconfig	2025-05-18 01:44:45.853666003 +0800
+@@ -195,6 +195,14 @@
+ 	  To compile this driver as a module, choose M here: the module
+ 	  will be called pwm-dwc.
+ 
++config PWM_DWC_K1PRO
++        tristate "DesignWare PWM Controller KPRO"
++        help
++          PWM driver for Synopsys DWC PWM Controller load by platform.
++
++          To compile this driver as a module, choose M here: the module
++          will be called pwm-dwc-k1pro.
++
+ config PWM_EP93XX
+ 	tristate "Cirrus Logic EP93xx PWM support"
+ 	depends on ARCH_EP93XX || COMPILE_TEST
+@@ -456,7 +464,7 @@
+ 
+ config PWM_PXA
+ 	tristate "PXA PWM support"
+-	depends on ARCH_PXA || ARCH_MMP || COMPILE_TEST
++	depends on ARCH_PXA || ARCH_MMP || COMPILE_TEST || SOC_SPACEMIT
+ 	depends on HAS_IOMEM
+ 	help
+ 	  Generic PWM framework driver for PXA.

@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/drivers/regulator/fixed.c b/drivers/regulator/fixed.c
+--- a/drivers/regulator/fixed.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/regulator/fixed.c	2025-05-18 01:44:45.895666055 +0800
+@@ -333,7 +333,9 @@
+ 	.probe		= reg_fixed_voltage_probe,
+ 	.driver		= {
+ 		.name		= "reg-fixed-voltage",
++#ifndef CONFIG_SOC_SPACEMIT
+ 		.probe_type	= PROBE_PREFER_ASYNCHRONOUS,
++#endif
+ 		.of_match_table = of_match_ptr(fixed_of_match),
+ 	},
+ };

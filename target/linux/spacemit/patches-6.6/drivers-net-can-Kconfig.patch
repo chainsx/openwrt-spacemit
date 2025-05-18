@@ -1,0 +1,15 @@
+diff -Nuar -r --no-dereference a/drivers/net/can/Kconfig b/drivers/net/can/Kconfig
+--- a/drivers/net/can/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/net/can/Kconfig	2025-05-18 01:44:41.689660847 +0800
+@@ -214,6 +214,11 @@
+ 	  Xilinx CAN driver. This driver supports both soft AXI CAN IP and
+ 	  Zynq CANPS IP.
+ 
++config IPMS_CAN
++	tristate "IPMS CAN"
++	help
++	  IPMS CANFD driver. This driver supports IPMS CANFD IP.
++
+ source "drivers/net/can/c_can/Kconfig"
+ source "drivers/net/can/cc770/Kconfig"
+ source "drivers/net/can/ctucanfd/Kconfig"

@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+--- a/drivers/usb/dwc3/core.h	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/dwc3/core.h	2025-05-18 01:44:47.457667985 +0800
+@@ -1303,6 +1303,10 @@
+ 
+ 	unsigned		connected:1;
+ 	unsigned		softconnect:1;
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	bool			monitor_vbus:1;
++	bool			vbus_session:1;
++#endif
+ 	unsigned		delayed_status:1;
+ 	unsigned		ep0_bounced:1;
+ 	unsigned		ep0_expect_in:1;

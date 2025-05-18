@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/drivers/perf/riscv_pmu_sbi.c b/drivers/perf/riscv_pmu_sbi.c
+--- a/drivers/perf/riscv_pmu_sbi.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/perf/riscv_pmu_sbi.c	2025-05-18 01:44:45.335665362 +0800
+@@ -22,7 +22,7 @@
+ 
+ #include <asm/errata_list.h>
+ #include <asm/sbi.h>
+-#include <asm/hwcap.h>
++#include <asm/cpufeature.h>
+ 
+ #define SYSCTL_NO_USER_ACCESS	0
+ #define SYSCTL_USER_ACCESS	1

@@ -1,0 +1,83 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/asm/atomic.h b/arch/riscv/include/asm/atomic.h
+--- a/arch/riscv/include/asm/atomic.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/asm/atomic.h	2025-05-18 01:44:32.823649823 +0800
+@@ -17,7 +17,6 @@
+ #endif
+ 
+ #include <asm/cmpxchg.h>
+-#include <asm/barrier.h>
+ 
+ #define __atomic_acquire_fence()					\
+ 	__asm__ __volatile__(RISCV_ACQUIRE_BARRIER "" ::: "memory")
+@@ -207,7 +206,7 @@
+ 		"	add      %[rc], %[p], %[a]\n"
+ 		"	sc.w.rl  %[rc], %[rc], %[c]\n"
+ 		"	bnez     %[rc], 0b\n"
+-		"	fence    rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		: [a]"r" (a), [u]"r" (u)
+@@ -228,7 +227,7 @@
+ 		"	add      %[rc], %[p], %[a]\n"
+ 		"	sc.d.rl  %[rc], %[rc], %[c]\n"
+ 		"	bnez     %[rc], 0b\n"
+-		"	fence    rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		: [a]"r" (a), [u]"r" (u)
+@@ -248,7 +247,7 @@
+ 		"	addi      %[rc], %[p], 1\n"
+ 		"	sc.w.rl   %[rc], %[rc], %[c]\n"
+ 		"	bnez      %[rc], 0b\n"
+-		"	fence     rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:
+@@ -268,7 +267,7 @@
+ 		"	addi      %[rc], %[p], -1\n"
+ 		"	sc.w.rl   %[rc], %[rc], %[c]\n"
+ 		"	bnez      %[rc], 0b\n"
+-		"	fence     rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:
+@@ -288,7 +287,7 @@
+ 		"	bltz     %[rc], 1f\n"
+ 		"	sc.w.rl  %[rc], %[rc], %[c]\n"
+ 		"	bnez     %[rc], 0b\n"
+-		"	fence    rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:
+@@ -310,7 +309,7 @@
+ 		"	addi      %[rc], %[p], 1\n"
+ 		"	sc.d.rl   %[rc], %[rc], %[c]\n"
+ 		"	bnez      %[rc], 0b\n"
+-		"	fence     rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:
+@@ -331,7 +330,7 @@
+ 		"	addi      %[rc], %[p], -1\n"
+ 		"	sc.d.rl   %[rc], %[rc], %[c]\n"
+ 		"	bnez      %[rc], 0b\n"
+-		"	fence     rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:
+@@ -352,7 +351,7 @@
+ 		"	bltz     %[rc], 1f\n"
+ 		"	sc.d.rl  %[rc], %[rc], %[c]\n"
+ 		"	bnez     %[rc], 0b\n"
+-		"	fence    rw, rw\n"
++		RISCV_FULL_BARRIER
+ 		"1:\n"
+ 		: [p]"=&r" (prev), [rc]"=&r" (rc), [c]"+A" (v->counter)
+ 		:

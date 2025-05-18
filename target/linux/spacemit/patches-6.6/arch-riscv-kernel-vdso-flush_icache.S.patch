@@ -1,0 +1,18 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/vdso/flush_icache.S b/arch/riscv/kernel/vdso/flush_icache.S
+--- a/arch/riscv/kernel/vdso/flush_icache.S	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/vdso/flush_icache.S	2025-05-18 01:44:32.891649908 +0800
+@@ -8,7 +8,7 @@
+ 
+ 	.text
+ /* int __vdso_flush_icache(void *start, void *end, unsigned long flags); */
+-ENTRY(__vdso_flush_icache)
++SYM_FUNC_START(__vdso_flush_icache)
+ 	.cfi_startproc
+ #ifdef CONFIG_SMP
+ 	li a7, __NR_riscv_flush_icache
+@@ -19,4 +19,4 @@
+ #endif
+ 	ret
+ 	.cfi_endproc
+-ENDPROC(__vdso_flush_icache)
++SYM_FUNC_END(__vdso_flush_icache)

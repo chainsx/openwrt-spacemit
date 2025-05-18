@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
+--- a/drivers/char/hw_random/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/char/hw_random/Kconfig	2025-05-18 01:44:34.560651988 +0800
+@@ -573,6 +573,15 @@
+ 	  To compile this driver as a module, choose M here.
+ 	  The module will be called jh7110-trng.
+ 
++config HW_RANDOM_SPACEMIT
++	tristate "SPACEMIT K1 Random Number Generator support"
++	depends on SOC_SPACEMIT_K1X
++	help
++	  This driver provides support for the True Random Number
++	  Generator in Spacemit K1.
++
++	  To compile this driver as a module, choose M here.
++	  The module will be called spacemit-crng.
+ endif # HW_RANDOM
+ 
+ config UML_RANDOM

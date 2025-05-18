@@ -1,0 +1,28 @@
+diff -Nuar -r --no-dereference a/drivers/cpufreq/Kconfig b/drivers/cpufreq/Kconfig
+--- a/drivers/cpufreq/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/cpufreq/Kconfig	2025-05-18 01:44:35.090652648 +0800
+@@ -231,7 +231,7 @@
+ source "drivers/cpufreq/Kconfig.x86"
+ endif
+ 
+-if ARM || ARM64
++if ARM || ARM64 || RISCV
+ source "drivers/cpufreq/Kconfig.arm"
+ endif
+ 
+@@ -311,6 +311,15 @@
+ 	help
+ 	  This adds the CPUFreq driver support for Freescale QorIQ SoCs
+ 	  which are capable of changing the CPU's frequency dynamically.
++
++config SPACEMIT_K1X_CPUFREQ
++	tristate "CPU frequency scaling driver for Spacemit K1X"
++	depends on OF && COMMON_CLK
++	select CPUFREQ_DT
++	select CPUFREQ_DT_PLATDEV
++	help
++	  This adds the CPUFreq driver support for Freescale QorIQ SoCs
++	  which are capable of changing the CPU's frequency dynamically.
+ 
+ endif
+ endmenu

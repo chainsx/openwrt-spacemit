@@ -1,0 +1,15 @@
+diff -Nuar -r --no-dereference a/drivers/usb/misc/Kconfig b/drivers/usb/misc/Kconfig
+--- a/drivers/usb/misc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/misc/Kconfig	2025-05-18 01:44:47.585668143 +0800
+@@ -318,3 +318,11 @@
+ 	  this config will enable the driver and it will automatically
+ 	  match the state of the USB subsystem. If this driver is a
+ 	  module it will be called onboard_usb_hub.
++
++config SPACEMIT_ONBOARD_USB_HUB
++	tristate "Spacemit onboard USB hub support"
++	depends on OF || COMPILE_TEST
++	default SOC_SPACEMIT_K1X
++	help
++	  Say Y here if you want to support onboard usb hubs on Spacemit
++	  platform. If unsure, say Y when compile for Spacemit platform.

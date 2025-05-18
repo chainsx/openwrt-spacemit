@@ -1,0 +1,24 @@
+diff -Nuar -r --no-dereference a/drivers/usb/host/ehci-hcd.c b/drivers/usb/host/ehci-hcd.c
+--- a/drivers/usb/host/ehci-hcd.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/host/ehci-hcd.c	2025-05-18 01:44:47.541668088 +0800
+@@ -1333,6 +1333,10 @@
+ #include "ehci-grlib.c"
+ #endif
+ 
++#ifdef CONFIG_USB_EHCI_K1X
++#include "ehci-k1x-ci.c"
++#endif
++
+ static struct platform_driver * const platform_drivers[] = {
+ #ifdef CONFIG_USB_EHCI_SH
+ 	&ehci_hcd_sh_driver,
+@@ -1346,6 +1350,9 @@
+ #ifdef CONFIG_SPARC_LEON
+ 	&ehci_grlib_driver,
+ #endif
++#ifdef CONFIG_USB_EHCI_K1X
++	&ehci_k1x_driver,
++#endif
+ };
+ 
+ static int __init ehci_hcd_init(void)

@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/stacktrace.c b/arch/riscv/kernel/stacktrace.c
+--- a/arch/riscv/kernel/stacktrace.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/stacktrace.c	2025-05-18 01:44:32.887649903 +0800
+@@ -28,7 +28,7 @@
+ 	return !(fp < low || fp > high || fp & 0x07);
+ }
+ 
+-void notrace walk_stackframe(struct task_struct *task, struct pt_regs *regs,
++void notrace __no_sanitize_address walk_stackframe(struct task_struct *task, struct pt_regs *regs,
+ 			     bool (*fn)(void *, unsigned long), void *arg)
+ {
+ 	unsigned long fp, sp, pc;

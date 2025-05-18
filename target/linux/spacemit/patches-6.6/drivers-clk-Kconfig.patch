@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+--- a/drivers/clk/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/clk/Kconfig	2025-05-18 01:44:34.614652055 +0800
+@@ -501,7 +501,7 @@
+ source "drivers/clk/x86/Kconfig"
+ source "drivers/clk/xilinx/Kconfig"
+ source "drivers/clk/zynqmp/Kconfig"
+-
++source "drivers/clk/spacemit/Kconfig"
+ # Kunit test cases
+ config CLK_KUNIT_TEST
+ 	tristate "Basic Clock Framework Kunit Tests" if !KUNIT_ALL_TESTS

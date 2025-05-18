@@ -1,0 +1,17 @@
+diff -Nuar -r --no-dereference a/drivers/usb/gadget/udc/Kconfig b/drivers/usb/gadget/udc/Kconfig
+--- a/drivers/usb/gadget/udc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/gadget/udc/Kconfig	2025-05-18 01:44:47.502668040 +0800
+@@ -236,6 +236,13 @@
+ 	  USB2.0 OTG controller, which can be configured as high speed or
+ 	  full speed USB peripheral.
+ 
++config USB_K1X_UDC
++	tristate "Spacemit K1X USB2.0 Device Controller"
++	depends on HAS_DMA
++	help
++	  Include a high speed USB2.0 OTG controller, which can be configured 
++	  as high speed or full speed USB peripheral.
++
+ config USB_MV_U3D
+ 	depends on HAS_DMA
+ 	tristate "MARVELL PXA2128 USB 3.0 controller"

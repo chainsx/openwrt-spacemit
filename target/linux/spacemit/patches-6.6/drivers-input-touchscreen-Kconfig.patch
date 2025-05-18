@@ -1,0 +1,54 @@
+diff -Nuar -r --no-dereference a/drivers/input/touchscreen/Kconfig b/drivers/input/touchscreen/Kconfig
+--- a/drivers/input/touchscreen/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/input/touchscreen/Kconfig	2025-05-18 01:44:39.980658727 +0800
+@@ -24,6 +24,16 @@
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called 88pm860x-ts.
+ 
++config TOUCHSCREEN_GT9XX
++        tristate "Goodix touchpanel GT9xx series"
++        depends on I2C
++        help
++          Say Y here if you have a Goodix GT9xx touchscreen
++          controller.
++
++                If build module, say M.
++                If unsure, say N.
++
+ config TOUCHSCREEN_ADS7846
+ 	tristate "ADS7846/TSC2046/AD7873 and AD(S)7843 based touchscreens"
+ 	depends on SPI_MASTER
+@@ -792,6 +802,12 @@
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called raspberrypi-ts.
+ 
++config TOUCHSCREEN_RASPITS_FT5426
++	tristate "Raspberry Pi 7 inch touchscreen touch control IC FT5426"
++	depends on I2C
++	help
++	  Control FT5426 touch IC.
++
+ config TOUCHSCREEN_MIGOR
+ 	tristate "Renesas MIGO-R touchscreen"
+ 	depends on (SH_MIGOR || COMPILE_TEST) && I2C
+@@ -1399,4 +1415,20 @@
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called himax_hx83112b.
+ 
++config TOUCHSCREEN_CHIPONE_TDDI
++	tristate "Chipone-tddi touchscreen support"
++	depends on SPI
++	help
++	  Say Y here if you have a touchscreen using Chipone-tddi.
++
++	  If unsure, say N.
++
++config TOUCHSCREEN_CHSC5XXX
++	tristate "Chsc5xxx touchscreen support"
++	depends on I2C
++	help
++	  Say Y here if you have a touchscreen using Chsc5xxx.
++
++source "drivers/input/touchscreen/chsc5xxx/Kconfig"
++source "drivers/input/touchscreen/focaltech_touch/Kconfig"
+ endif

@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+--- a/drivers/pinctrl/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/pinctrl/Makefile	2025-05-18 01:44:45.426665475 +0800
+@@ -50,6 +50,7 @@
+ obj-$(CONFIG_PINCTRL_TB10X)	+= pinctrl-tb10x.o
+ obj-$(CONFIG_PINCTRL_ZYNQMP)	+= pinctrl-zynqmp.o
+ obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
++obj-$(CONFIG_PINCTRL_SPACEMIT_PMIC)	+= spacemit-pmic-pinctrl.o
+ 
+ obj-y				+= actions/
+ obj-$(CONFIG_ARCH_ASPEED)	+= aspeed/
+@@ -70,6 +71,7 @@
+ obj-$(CONFIG_PINCTRL_SAMSUNG)	+= samsung/
+ obj-$(CONFIG_PINCTRL_SPEAR)	+= spear/
+ obj-y				+= sprd/
++obj-$(CONFIG_SOC_SPACEMIT)      += spacemit/
+ obj-$(CONFIG_SOC_STARFIVE)	+= starfive/
+ obj-$(CONFIG_PINCTRL_STM32)	+= stm32/
+ obj-y				+= sunplus/

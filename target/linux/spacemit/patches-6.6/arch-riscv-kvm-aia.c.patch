@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kvm/aia.c b/arch/riscv/kvm/aia.c
+--- a/arch/riscv/kvm/aia.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kvm/aia.c	2025-05-18 01:44:32.894649912 +0800
+@@ -14,7 +14,7 @@
+ #include <linux/kvm_host.h>
+ #include <linux/percpu.h>
+ #include <linux/spinlock.h>
+-#include <asm/hwcap.h>
++#include <asm/cpufeature.h>
+ #include <asm/kvm_aia_imsic.h>
+ 
+ struct aia_hgei_control {

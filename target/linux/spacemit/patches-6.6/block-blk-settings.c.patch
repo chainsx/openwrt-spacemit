@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/block/blk-settings.c b/block/blk-settings.c
+--- a/block/blk-settings.c	2024-11-22 22:38:37.000000000 +0800
++++ b/block/blk-settings.c	2025-05-18 01:44:33.972651256 +0800
+@@ -290,7 +290,9 @@
+ 	}
+ 
+ 	/* see blk_queue_virt_boundary() for the explanation */
++#ifndef CONFIG_SOC_SPACEMIT_K1X
+ 	WARN_ON_ONCE(q->limits.virt_boundary_mask);
++#endif
+ 
+ 	q->limits.max_segment_size = max_size;
+ }

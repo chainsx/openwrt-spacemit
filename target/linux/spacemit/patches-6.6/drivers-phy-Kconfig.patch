@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+--- a/drivers/phy/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/phy/Kconfig	2025-05-18 01:44:45.337665365 +0800
+@@ -98,5 +98,6 @@
+ source "drivers/phy/ti/Kconfig"
+ source "drivers/phy/intel/Kconfig"
+ source "drivers/phy/xilinx/Kconfig"
++source "drivers/phy/spacemit/Kconfig"
+ 
+ endmenu

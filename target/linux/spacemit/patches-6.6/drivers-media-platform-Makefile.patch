@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+--- a/drivers/media/platform/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/media/platform/Makefile	2025-05-18 01:44:40.699659620 +0800
+@@ -28,6 +28,7 @@
+ obj-y += verisilicon/
+ obj-y += via/
+ obj-y += xilinx/
++obj-y += spacemit/
+ 
+ # Please place here only ancillary drivers that aren't SoC-specific
+ # Please keep it alphabetically sorted by Kconfig name

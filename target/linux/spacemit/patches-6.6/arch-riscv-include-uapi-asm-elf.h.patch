@@ -1,0 +1,29 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/uapi/asm/elf.h b/arch/riscv/include/uapi/asm/elf.h
+--- a/arch/riscv/include/uapi/asm/elf.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/uapi/asm/elf.h	2025-05-18 01:44:32.852649859 +0800
+@@ -49,6 +49,7 @@
+ #define R_RISCV_TLS_DTPREL64	9
+ #define R_RISCV_TLS_TPREL32	10
+ #define R_RISCV_TLS_TPREL64	11
++#define R_RISCV_IRELATIVE	58
+ 
+ /* Relocation types not used by the dynamic linker */
+ #define R_RISCV_BRANCH		16
+@@ -81,7 +82,6 @@
+ #define R_RISCV_ALIGN		43
+ #define R_RISCV_RVC_BRANCH	44
+ #define R_RISCV_RVC_JUMP	45
+-#define R_RISCV_LUI		46
+ #define R_RISCV_GPREL_I		47
+ #define R_RISCV_GPREL_S		48
+ #define R_RISCV_TPREL_I		49
+@@ -93,6 +93,9 @@
+ #define R_RISCV_SET16		55
+ #define R_RISCV_SET32		56
+ #define R_RISCV_32_PCREL	57
++#define R_RISCV_PLT32		59
++#define R_RISCV_SET_ULEB128	60
++#define R_RISCV_SUB_ULEB128	61
+ 
+ 
+ #endif /* _UAPI_ASM_RISCV_ELF_H */

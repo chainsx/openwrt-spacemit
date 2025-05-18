@@ -1,0 +1,39 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/sbi-ipi.c b/arch/riscv/kernel/sbi-ipi.c
+--- a/arch/riscv/kernel/sbi-ipi.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/sbi-ipi.c	2025-05-18 01:44:32.886649902 +0800
+@@ -12,6 +12,7 @@
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqdomain.h>
+ #include <asm/sbi.h>
++#include <asm/csr.h>
+ 
+ static int sbi_ipi_virq;
+ 
+@@ -33,6 +34,15 @@
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_SOC_SPACEMIT
++static int sbi_clint_ipi_starting_cpu(unsigned int cpu)
++{
++	csr_set(CSR_IE, IE_SIE);
++
++	return 0;
++}
++#endif
++
+ void __init sbi_ipi_init(void)
+ {
+ 	int virq;
+@@ -71,6 +81,11 @@
+ 	cpuhp_setup_state(CPUHP_AP_ONLINE_DYN,
+ 			  "irqchip/sbi-ipi:starting",
+ 			  sbi_ipi_starting_cpu, NULL);
++#ifdef CONFIG_SOC_SPACEMIT
++	cpuhp_setup_state(CPUHP_AP_CLINT_IPI_RISCV_STARTING,
++			  "irqchip/sbi-clint-ipi:starting",
++			  sbi_clint_ipi_starting_cpu, NULL);
++#endif
+ 
+ 	riscv_ipi_set_virq_range(virq, BITS_PER_BYTE, false);
+ 	pr_info("providing IPIs using SBI IPI extension\n");

@@ -1,0 +1,15 @@
+diff -Nuar -r --no-dereference a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+--- a/drivers/usb/dwc2/hcd.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/dwc2/hcd.c	2025-05-18 01:44:47.451667977 +0800
+@@ -5146,9 +5146,9 @@
+ 
+ 	/* Set device flags indicating whether the HCD supports DMA */
+ 	if (hsotg->params.host_dma) {
+-		if (dma_set_mask(hsotg->dev, DMA_BIT_MASK(32)) < 0)
++		if (dma_set_mask(hsotg->dev, DMA_BIT_MASK(40)) < 0)
+ 			dev_warn(hsotg->dev, "can't set DMA mask\n");
+-		if (dma_set_coherent_mask(hsotg->dev, DMA_BIT_MASK(32)) < 0)
++		if (dma_set_coherent_mask(hsotg->dev, DMA_BIT_MASK(40)) < 0)
+ 			dev_warn(hsotg->dev, "can't set coherent DMA mask\n");
+ 	}
+ 

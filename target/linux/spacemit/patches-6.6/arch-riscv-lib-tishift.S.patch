@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/lib/tishift.S b/arch/riscv/lib/tishift.S
+--- a/arch/riscv/lib/tishift.S	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/lib/tishift.S	2025-05-18 01:44:32.903649923 +0800
+@@ -4,7 +4,7 @@
+  */
+ 
+ #include <linux/linkage.h>
+-#include <asm-generic/export.h>
++#include <linux/export.h>
+ 
+ SYM_FUNC_START(__lshrti3)
+ 	beqz	a2, .L1

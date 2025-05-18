@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/drivers/cpuidle/cpuidle-riscv-sbi.c b/drivers/cpuidle/cpuidle-riscv-sbi.c
+--- a/drivers/cpuidle/cpuidle-riscv-sbi.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/cpuidle/cpuidle-riscv-sbi.c	2025-05-18 01:44:35.122652688 +0800
+@@ -80,6 +80,10 @@
+ {
+ 	struct sbiret ret;
+ 
++#if defined(CONFIG_SOC_SPACEMIT_K1PRO) || defined(CONFIG_SOC_SPACEMIT_K1X)
++       /* flush the local cache */
++       sbi_flush_local_dcache_all();
++#endif
+ 	ret = sbi_ecall(SBI_EXT_HSM, SBI_EXT_HSM_HART_SUSPEND,
+ 			suspend_type, resume_addr, opaque, 0, 0, 0);
+ 

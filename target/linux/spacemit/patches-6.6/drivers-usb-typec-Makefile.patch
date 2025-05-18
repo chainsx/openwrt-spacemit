@@ -1,0 +1,9 @@
+diff -Nuar -r --no-dereference a/drivers/usb/typec/Makefile b/drivers/usb/typec/Makefile
+--- a/drivers/usb/typec/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/typec/Makefile	2025-05-18 01:44:47.674668253 +0800
+@@ -11,4 +11,5 @@
+ obj-$(CONFIG_TYPEC_STUSB160X) 	+= stusb160x.o
+ obj-$(CONFIG_TYPEC_RT1719)	+= rt1719.o
+ obj-$(CONFIG_TYPEC_WUSB3801)	+= wusb3801.o
++obj-$(CONFIG_TYPEC_HUSB239)	+= husb239.o
+ obj-$(CONFIG_TYPEC)		+= mux/

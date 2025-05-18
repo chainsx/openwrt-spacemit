@@ -1,0 +1,22 @@
+diff -Nuar -r --no-dereference a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+--- a/drivers/remoteproc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/remoteproc/Kconfig	2025-05-18 01:44:45.940666110 +0800
+@@ -161,6 +161,18 @@
+ 	  processors on various TI SoCs. It's safe to say N here if you're
+ 	  not interested in the PRU or if you are unsure.
+ 
++config K1PRO_REMOTEPROC
++	tristate "Spacemit k1pro remoteproc support"
++	help
++	  Say Y here here to support spacemit remote processors
++	  via the remote processor framework.
++
++config K1X_REMOTEPROC
++	tristate "Spacemit k1x remoteproc support"
++	help
++	  Say Y here here to support spacemit remote processors
++	  via the remote processor framework.
++
+ config QCOM_PIL_INFO
+ 	tristate
+ 

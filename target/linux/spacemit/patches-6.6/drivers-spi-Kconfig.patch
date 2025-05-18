@@ -1,0 +1,30 @@
+diff -Nuar -r --no-dereference a/drivers/spi/Kconfig b/drivers/spi/Kconfig
+--- a/drivers/spi/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/spi/Kconfig	2025-05-18 01:44:46.608666936 +0800
+@@ -295,6 +295,26 @@
+ 	help
+ 	  SPI master controller for DaVinci/DA8x/OMAP-L/AM1x SPI modules.
+ 
++config SPI_DESIGNWARE_EXT
++	tristate "DesignWare enhanced SPI controller core support"
++        imply SPI_MEM
++	help
++	  general driver for enhanced SPI controller core from  DesignWare
++
++config SPI_K1X
++	tristate "K1X SPI Controller"
++	depends on SOC_SPACEMIT_K1X
++	help
++	  Enable support for the Spacemit K1X SPI controller.
++
++config SPI_K1X_QSPI
++	tristate "K1X QuadSPI Controller"
++	depends on SPI_MEM
++	help
++	  This enables support for the Spacemit K1X QuadSPI controller in master mode.
++	  This controller does only support the high-level SPI memory interface
++	  and not support generic SPI messages.
++
+ config SPI_DESIGNWARE
+ 	tristate "DesignWare SPI controller core support"
+ 	imply SPI_MEM

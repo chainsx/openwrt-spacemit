@@ -1,0 +1,20 @@
+diff -Nuar -r --no-dereference a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
+--- a/drivers/nvmem/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/nvmem/Kconfig	2025-05-18 01:44:45.172665161 +0800
+@@ -298,6 +298,16 @@
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem-snvs-lpgpr.
+ 
++config NVMEM_SPACEMIT_EFUSE
++	tristate "Spacemit SoCs efuse support"
++	depends on SOC_SPACEMIT || COMPILE_TEST
++	help
++	  This is a simple efuse provider driver for Spacemit SoC
++	  provide data from eFuse, such as chip-version.
++
++	  This driver can also be built as a module. If so, the module
++	  will be called nvmem_spacemit_efuse.
++
+ config NVMEM_SPMI_SDAM
+ 	tristate "SPMI SDAM Support"
+ 	depends on SPMI

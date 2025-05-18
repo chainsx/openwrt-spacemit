@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+--- a/drivers/crypto/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/crypto/Kconfig	2025-05-18 01:44:35.129652697 +0800
+@@ -796,5 +796,6 @@
+ 
+ source "drivers/crypto/aspeed/Kconfig"
+ source "drivers/crypto/starfive/Kconfig"
++source "drivers/crypto/spacemit/Kconfig"
+ 
+ endif # CRYPTO_HW

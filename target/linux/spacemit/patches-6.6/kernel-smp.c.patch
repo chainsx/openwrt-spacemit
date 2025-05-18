@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/kernel/smp.c b/kernel/smp.c
+--- a/kernel/smp.c	2024-11-22 22:38:37.000000000 +0800
++++ b/kernel/smp.c	2025-05-18 01:44:50.719672009 +0800
+@@ -987,6 +987,10 @@
+ 
+ 	/* Any cleanup work */
+ 	smp_cpus_done(setup_max_cpus);
++
++#ifdef CONFIG_BIND_THREAD_TO_AICORES
++	ai_core_mask_get();
++#endif
+ }
+ 
+ /*

@@ -1,0 +1,16 @@
+diff -Nuar -r --no-dereference a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+--- a/drivers/regulator/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/regulator/Kconfig	2025-05-18 01:44:45.881666037 +0800
+@@ -1663,4 +1663,12 @@
+ 	  boost regulator and IBB can be used as a negative boost regulator
+ 	  for LCD display panel.
+ 
++config REGULATOR_SPACEMIT
++	tristate "Spacemit regulator support"
++	depends on MFD_SPACEMIT_PMIC
++	select REGULATOR_FIXED_VOLTAGE
++	help
++	  This driver provides support for the voltage regulators on the
++	   spacemit pmic.
++	
+ endif

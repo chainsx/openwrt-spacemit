@@ -1,0 +1,71 @@
+diff -Nuar -r --no-dereference a/drivers/rtc/rtc-sa1100.c b/drivers/rtc/rtc-sa1100.c
+--- a/drivers/rtc/rtc-sa1100.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/rtc/rtc-sa1100.c	2025-05-18 01:44:46.033666225 +0800
+@@ -20,6 +20,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/module.h>
+ #include <linux/clk.h>
++#include <linux/reset.h>
+ #include <linux/rtc.h>
+ #include <linux/init.h>
+ #include <linux/fs.h>
+@@ -80,7 +81,10 @@
+ 
+ 	/* update irq data & counter */
+ 	if (rtsr & RTSR_AL)
++	{
+ 		events |= RTC_AF | RTC_IRQF;
++		printk("rtc hit alarm\n");
++	}
+ 	if (rtsr & RTSR_HZ)
+ 		events |= RTC_UF | RTC_IRQF;
+ 
+@@ -186,6 +190,10 @@
+ 	ret = clk_prepare_enable(info->clk);
+ 	if (ret)
+ 		return ret;
++
++	ret = reset_control_deassert(info->reset);
++	if(ret)
++		goto free_clk;
+ 	/*
+ 	 * According to the manual we should be able to let RTTR be zero
+ 	 * and then a default diviser for a 32.768KHz clock is used.
+@@ -207,6 +215,7 @@
+ 
+ 	ret = devm_rtc_register_device(info->rtc);
+ 	if (ret) {
++		reset_control_assert(info->reset);
+ 		clk_disable_unprepare(info->clk);
+ 		return ret;
+ 	}
+@@ -236,6 +245,10 @@
+ 	writel_relaxed(RTSR_AL | RTSR_HZ, info->rtsr);
+ 
+ 	return 0;
++
++free_clk:
++	clk_disable_unprepare(info->clk);
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(sa1100_rtc_init);
+ 
+@@ -274,6 +287,10 @@
+ 		return ret;
+ 	}
+ 
++	info->reset = devm_reset_control_get_optional(&pdev->dev, NULL);
++	if(IS_ERR(info->reset))
++		return PTR_ERR(info->reset);
++
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+@@ -305,6 +322,7 @@
+ 		spin_lock_irq(&info->lock);
+ 		writel_relaxed(0, info->rtsr);
+ 		spin_unlock_irq(&info->lock);
++		reset_control_assert(info->reset);
+ 		clk_disable_unprepare(info->clk);
+ 	}
+ }

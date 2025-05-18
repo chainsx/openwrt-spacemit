@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/crypto/Makefile b/drivers/crypto/Makefile
+--- a/drivers/crypto/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/crypto/Makefile	2025-05-18 01:44:35.129652697 +0800
+@@ -51,3 +51,4 @@
+ obj-$(CONFIG_CRYPTO_DEV_AMLOGIC_GXL) += amlogic/
+ obj-y += intel/
+ obj-y += starfive/
++obj-y += spacemit/

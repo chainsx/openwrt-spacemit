@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kvm/tlb.c b/arch/riscv/kvm/tlb.c
+--- a/arch/riscv/kvm/tlb.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kvm/tlb.c	2025-05-18 01:44:32.896649914 +0800
+@@ -12,7 +12,7 @@
+ #include <linux/kvm_host.h>
+ #include <asm/cacheflush.h>
+ #include <asm/csr.h>
+-#include <asm/hwcap.h>
++#include <asm/cpufeature.h>
+ #include <asm/insn-def.h>
+ 
+ #define has_svinval()	riscv_has_extension_unlikely(RISCV_ISA_EXT_SVINVAL)

@@ -1,0 +1,35 @@
+diff -Nuar -r --no-dereference a/drivers/iio/light/stk3310.c b/drivers/iio/light/stk3310.c
+--- a/drivers/iio/light/stk3310.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/iio/light/stk3310.c	2025-05-18 01:44:39.594658248 +0800
+@@ -16,6 +16,7 @@
+ #include <linux/iio/events.h>
+ #include <linux/iio/iio.h>
+ #include <linux/iio/sysfs.h>
++#include <linux/gpio.h>
+ 
+ #define STK3310_REG_STATE			0x00
+ #define STK3310_REG_PSCTRL			0x01
+@@ -591,6 +592,9 @@
+ 	int ret;
+ 	struct iio_dev *indio_dev;
+ 	struct stk3310_data *data;
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	struct gpio_desc *pwr;
++#endif
+ 
+ 	indio_dev = devm_iio_device_alloc(&client->dev, sizeof(*data));
+ 	if (!indio_dev) {
+@@ -605,6 +609,13 @@
+ 	device_property_read_u32(&client->dev, "proximity-near-level",
+ 				 &data->ps_near_level);
+ 
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	pwr = devm_gpiod_get(&client->dev, "pwr", GPIOD_OUT_LOW);
++	if(IS_ERR(pwr))
++		return PTR_ERR(pwr);
++	gpiod_set_value(pwr, 1);
++#endif
++
+ 	mutex_init(&data->lock);
+ 
+ 	ret = stk3310_regmap_init(data);

@@ -1,0 +1,29 @@
+diff -Nuar -r --no-dereference a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
+--- a/drivers/net/ethernet/stmicro/stmmac/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig	2025-05-18 01:44:42.879662322 +0800
+@@ -255,6 +255,25 @@
+ 	help
+ 	  Support for ethernet controller on Visconti SoCs.
+ 
++config DWMAC_SPACEMIT
++	tristate "Spacemit DWMAC support"
++	help
++	  Support for ethernet controller on Spacemit SOCs.
++
++	  This selects Spacemit SoC glue layer support for the stmmac
++	  device driver. This driver is used for the Spacemit series
++	  SOCs GMAC ethernet controller.
++
++config DWMAC_SPACEMIT_ETHQOS
++	tristate "Spacemit ETHQOS support"
++	default CONFIG_SOC_SPACEMIT
++	depends on OF && (CONFIG_SOC_SPACEMIT || COMPILE_TEST)
++	help
++	  Support for the Spacemit ETHQOS core.
++
++	  This selects the Spacemit ETHQOS glue layer support for the
++	  stmmac device driver.
++
+ endif
+ 
+ config DWMAC_INTEL

@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/drivers/usb/dwc3/Kconfig b/drivers/usb/dwc3/Kconfig
+--- a/drivers/usb/dwc3/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/dwc3/Kconfig	2025-05-18 01:44:47.456667983 +0800
+@@ -178,4 +178,10 @@
+ 	  Only the host mode is currently supported.
+ 	  Say 'Y' or 'M' here if you have one such device.
+ 
++config USB_DWC3_SPACEMIT
++	tristate "Spacemit Platforms"
++	default USB_DWC3
++	help
++	  Support SPACEMIT platforms with DesignWare Core USB3 IP.
++	  Say 'Y' or 'M' here if you have one such device
+ endif

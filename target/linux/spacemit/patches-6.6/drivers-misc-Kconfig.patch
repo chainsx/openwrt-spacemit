@@ -1,0 +1,30 @@
+diff -Nuar -r --no-dereference a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+--- a/drivers/misc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/misc/Kconfig	2025-05-18 01:44:41.404660494 +0800
+@@ -562,6 +562,26 @@
+ 	  This driver can also be built as a module.  If so, the module
+ 	  will be called tps6594-pfsm.
+ 
++config SPACEMIT_TCM
++	bool "Generic tcm alloc management driver"
++	depends on SOC_SPACEMIT
++	default y
++	help
++	  This driver allows you to alloc tcm for userspace.
++
++config OCP2138
++	tristate "Driver for ocp2138"
++	depends on I2C
++	default y
++	help
++	  Support for ocp2138.
++
++config ICM42607
++        tristate "ICM42607 sensor support"
++        depends on I2C
++        help
++          Enable support for the ICM42607 sensor.
++
+ source "drivers/misc/c2port/Kconfig"
+ source "drivers/misc/eeprom/Kconfig"
+ source "drivers/misc/cb710/Kconfig"

@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/Documentation/translations/it_IT/riscv/patch-acceptance.rst b/Documentation/translations/it_IT/riscv/patch-acceptance.rst
+--- a/Documentation/translations/it_IT/riscv/patch-acceptance.rst	2024-11-22 22:38:37.000000000 +0800
++++ b/Documentation/translations/it_IT/riscv/patch-acceptance.rst	2025-05-18 01:44:29.031645088 +0800
+@@ -1,6 +1,6 @@
+ .. include:: ../disclaimer-ita.rst
+ 
+-:Original: :doc:`../../../riscv/patch-acceptance`
++:Original: :doc:`../../../arch/riscv/patch-acceptance`
+ :Translator: Federico Vaga <federico.vaga@vaga.pv.it>
+ 
+ arch/riscv linee guida alla manutenzione per gli sviluppatori

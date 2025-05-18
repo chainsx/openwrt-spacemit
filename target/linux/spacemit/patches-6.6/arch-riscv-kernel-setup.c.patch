@@ -1,0 +1,25 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+--- a/arch/riscv/kernel/setup.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/setup.c	2025-05-18 01:44:32.886649902 +0800
+@@ -26,6 +26,7 @@
+ #include <asm/acpi.h>
+ #include <asm/alternative.h>
+ #include <asm/cacheflush.h>
++#include <asm/cpufeature.h>
+ #include <asm/cpu_ops.h>
+ #include <asm/early_ioremap.h>
+ #include <asm/pgtable.h>
+@@ -307,10 +308,13 @@
+ 	riscv_fill_hwcap();
+ 	init_rt_signal_env();
+ 	apply_boot_alternatives();
++
+ 	if (IS_ENABLED(CONFIG_RISCV_ISA_ZICBOM) &&
+ 	    riscv_isa_extension_available(NULL, ZICBOM))
+ 		riscv_noncoherent_supported();
+ 	riscv_set_dma_cache_alignment();
++
++	riscv_user_isa_enable();
+ }
+ 
+ static int __init topology_init(void)

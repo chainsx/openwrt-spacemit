@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/usb/misc/Makefile b/drivers/usb/misc/Makefile
+--- a/drivers/usb/misc/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/misc/Makefile	2025-05-18 01:44:47.586668144 +0800
+@@ -33,3 +33,4 @@
+ obj-$(CONFIG_USB_LINK_LAYER_TEST)	+= lvstest.o
+ obj-$(CONFIG_BRCM_USB_PINMAP)		+= brcmstb-usb-pinmap.o
+ obj-$(CONFIG_USB_ONBOARD_HUB)		+= onboard_usb_hub.o
++obj-$(CONFIG_SPACEMIT_ONBOARD_USB_HUB)		+= spacemit_onboard_hub.o

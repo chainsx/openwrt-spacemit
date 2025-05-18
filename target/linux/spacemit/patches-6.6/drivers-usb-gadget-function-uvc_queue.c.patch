@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/drivers/usb/gadget/function/uvc_queue.c b/drivers/usb/gadget/function/uvc_queue.c
+--- a/drivers/usb/gadget/function/uvc_queue.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/gadget/function/uvc_queue.c	2025-05-18 01:44:47.493668029 +0800
+@@ -153,6 +153,9 @@
+ 	queue->queue.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY
+ 				     | V4L2_BUF_FLAG_TSTAMP_SRC_EOF;
+ 	queue->queue.dev = dev;
++#if defined(CONFIG_SOC_SPACEMIT_K1X)
++	queue->queue.gfp_flags |= GFP_DMA32;
++#endif
+ 
+ 	ret = vb2_queue_init(&queue->queue);
+ 	if (ret)

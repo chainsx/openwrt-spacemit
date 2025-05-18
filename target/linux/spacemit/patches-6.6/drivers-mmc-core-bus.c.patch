@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/drivers/mmc/core/bus.c b/drivers/mmc/core/bus.c
+--- a/drivers/mmc/core/bus.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mmc/core/bus.c	2025-05-18 01:44:41.504660618 +0800
+@@ -367,6 +367,10 @@
+ 
+ 	device_enable_async_suspend(&card->dev);
+ 
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	if (card->host->ops->encrypt_config)
++		card->host->ops->encrypt_config(card->host, 1);
++#endif
+ 	ret = device_add(&card->dev);
+ 	if (ret)
+ 		return ret;

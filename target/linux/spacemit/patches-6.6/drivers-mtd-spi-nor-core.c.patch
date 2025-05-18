@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+--- a/drivers/mtd/spi-nor/core.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mtd/spi-nor/core.c	2025-05-18 01:44:41.652660801 +0800
+@@ -2015,6 +2015,7 @@
+ 	&spi_nor_winbond,
+ 	&spi_nor_xilinx,
+ 	&spi_nor_xmc,
++	&spi_nor_fmsh,
+ };
+ 
+ static const struct flash_info spi_nor_generic_flash = {

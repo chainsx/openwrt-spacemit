@@ -1,0 +1,22 @@
+diff -Nuar -r --no-dereference a/include/target/target_core_base.h b/include/target/target_core_base.h
+--- a/include/target/target_core_base.h	2024-11-22 22:38:37.000000000 +0800
++++ b/include/target/target_core_base.h	2025-05-18 01:44:50.072671212 +0800
+@@ -213,6 +213,10 @@
+ 	TMR_LUN_RESET		= 5,
+ 	TMR_TARGET_WARM_RESET	= 6,
+ 	TMR_TARGET_COLD_RESET	= 7,
++	TMR_I_T_NEXUS_RESET	= 8,
++	TMR_QUERY_TASK		= 9,
++	TMR_QUERY_TASK_SET	= 10,
++	TMR_QUERY_ASYNC_EVENT	= 11,
+ 	TMR_LUN_RESET_PRO	= 0x80,
+ 	TMR_UNKNOWN		= 0xff,
+ };
+@@ -225,6 +229,7 @@
+ 	TMR_LUN_DOES_NOT_EXIST		= 3,
+ 	TMR_TASK_MGMT_FUNCTION_NOT_SUPPORTED	= 4,
+ 	TMR_FUNCTION_REJECTED		= 5,
++	TMR_OVERLAPPED_TAG_ATTEMPTED	= 6,
+ };
+ 
+ /*

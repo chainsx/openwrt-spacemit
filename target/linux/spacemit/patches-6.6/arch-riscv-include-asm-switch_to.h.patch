@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/asm/switch_to.h b/arch/riscv/include/asm/switch_to.h
+--- a/arch/riscv/include/asm/switch_to.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/asm/switch_to.h	2025-05-18 01:44:32.845649851 +0800
+@@ -9,7 +9,7 @@
+ #include <linux/jump_label.h>
+ #include <linux/sched/task_stack.h>
+ #include <asm/vector.h>
+-#include <asm/hwcap.h>
++#include <asm/cpufeature.h>
+ #include <asm/processor.h>
+ #include <asm/ptrace.h>
+ #include <asm/csr.h>

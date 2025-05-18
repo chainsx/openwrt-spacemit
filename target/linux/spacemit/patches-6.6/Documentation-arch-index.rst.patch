@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/Documentation/arch/index.rst b/Documentation/arch/index.rst
+--- a/Documentation/arch/index.rst	2024-11-22 22:38:37.000000000 +0800
++++ b/Documentation/arch/index.rst	2025-05-18 01:44:27.384643028 +0800
+@@ -20,7 +20,7 @@
+    openrisc/index
+    parisc/index
+    ../powerpc/index
+-   ../riscv/index
++   riscv/index
+    s390/index
+    sh/index
+    sparc/index

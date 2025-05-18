@@ -1,0 +1,22 @@
+diff -Nuar -r --no-dereference a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
+--- a/drivers/usb/host/xhci-plat.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/host/xhci-plat.c	2025-05-18 01:44:47.574668129 +0800
+@@ -253,12 +253,17 @@
+ 		if (device_property_read_bool(tmpdev, "xhci-sg-trb-cache-size-quirk"))
+ 			xhci->quirks |= XHCI_SG_TRB_CACHE_SIZE_QUIRK;
+ 
++		#if defined(CONFIG_SOC_SPACEMIT_K1X)
++		if (device_property_read_bool(tmpdev, "reset-on-resume"))
++			xhci->quirks |= XHCI_RESET_ON_RESUME;
++		#endif
++
+ 		device_property_read_u32(tmpdev, "imod-interval-ns",
+ 					 &xhci->imod_interval);
+ 	}
+ 
+ 	/*
+-	 * Drivers such as dwc3 manages PHYs themself (and rely on driver name
++	 * Drivers such as dwc3 manages PHYs themself (and rely on drivers name
+ 	 * matching for the xhci platform device).
+ 	 */
+ 	of_match = of_match_device(pdev->dev.driver->of_match_table, &pdev->dev);

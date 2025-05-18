@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/include/linux/pm_opp.h b/include/linux/pm_opp.h
+--- a/include/linux/pm_opp.h	2024-11-22 22:38:37.000000000 +0800
++++ b/include/linux/pm_opp.h	2025-05-18 01:44:49.601670631 +0800
+@@ -169,6 +169,9 @@
+ int dev_pm_opp_unregister_notifier(struct device *dev, struct notifier_block *nb);
+ 
+ int dev_pm_opp_set_config(struct device *dev, struct dev_pm_opp_config *config);
++#ifdef CONFIG_SOC_SPACEMIT
++int dev_pm_opp_set_config_indexed(struct device *dev, struct dev_pm_opp_config *config, int index);
++#endif
+ int devm_pm_opp_set_config(struct device *dev, struct dev_pm_opp_config *config);
+ void dev_pm_opp_clear_config(int token);
+ int dev_pm_opp_config_clks_simple(struct device *dev,

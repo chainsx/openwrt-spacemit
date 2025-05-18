@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+--- a/drivers/media/platform/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/media/platform/Kconfig	2025-05-18 01:44:40.698659618 +0800
+@@ -85,5 +85,6 @@
+ source "drivers/media/platform/verisilicon/Kconfig"
+ source "drivers/media/platform/via/Kconfig"
+ source "drivers/media/platform/xilinx/Kconfig"
++source "drivers/media/platform/spacemit/Kconfig"
+ 
+ endif # MEDIA_PLATFORM_DRIVERS

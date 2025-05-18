@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/drivers/media/rc/Kconfig b/drivers/media/rc/Kconfig
+--- a/drivers/media/rc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/media/rc/Kconfig	2025-05-18 01:44:41.030660030 +0800
+@@ -393,6 +393,15 @@
+ 	   To compile this driver as a module, choose M here: the module will
+ 	   be called sunxi-ir.
+ 
++config IR_SPACEMIT
++	tristate "SPACEMIT IR remote Recriver control"
++	depends on SOC_SPACEMIT
++	help
++	   Say Y if you want to use spacemit IR Controller
++
++	   To compile this driver as a module, choose M here: the module will be
++	   called spacemit-ir
++
+ config IR_TOY
+ 	tristate "Infrared Toy and IR Droid"
+ 	depends on USB

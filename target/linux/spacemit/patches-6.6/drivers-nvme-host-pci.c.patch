@@ -1,0 +1,39 @@
+diff -Nuar -r --no-dereference a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+--- a/drivers/nvme/host/pci.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/nvme/host/pci.c	2025-05-18 01:44:45.160665146 +0800
+@@ -800,7 +800,7 @@
+ 		goto out_free_sg;
+ 
+ 	rc = dma_map_sgtable(dev->dev, &iod->sgt, rq_dma_dir(req),
+-			     DMA_ATTR_NO_WARN);
++			     0);
+ 	if (rc) {
+ 		if (rc == -EREMOTEIO)
+ 			ret = BLK_STS_TARGET;
+@@ -1924,7 +1924,7 @@
+ 
+ 		dma_free_attrs(dev->dev, size, dev->host_mem_desc_bufs[i],
+ 			       le64_to_cpu(desc->addr),
+-			       DMA_ATTR_NO_KERNEL_MAPPING | DMA_ATTR_NO_WARN);
++			       DMA_ATTR_NO_KERNEL_MAPPING);
+ 	}
+ 
+ 	kfree(dev->host_mem_desc_bufs);
+@@ -1967,7 +1967,7 @@
+ 
+ 		len = min_t(u64, chunk_size, preferred - size);
+ 		bufs[i] = dma_alloc_attrs(dev->dev, len, &dma_addr, GFP_KERNEL,
+-				DMA_ATTR_NO_KERNEL_MAPPING | DMA_ATTR_NO_WARN);
++				DMA_ATTR_NO_KERNEL_MAPPING);
+ 		if (!bufs[i])
+ 			break;
+ 
+@@ -1992,7 +1992,7 @@
+ 
+ 		dma_free_attrs(dev->dev, size, bufs[i],
+ 			       le64_to_cpu(descs[i].addr),
+-			       DMA_ATTR_NO_KERNEL_MAPPING | DMA_ATTR_NO_WARN);
++			       DMA_ATTR_NO_KERNEL_MAPPING);
+ 	}
+ 
+ 	kfree(bufs);

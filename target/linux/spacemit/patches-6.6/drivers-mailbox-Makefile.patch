@@ -1,0 +1,9 @@
+diff -Nuar -r --no-dereference a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+--- a/drivers/mailbox/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mailbox/Makefile	2025-05-18 01:44:40.224659030 +0800
+@@ -62,3 +62,5 @@
+ obj-$(CONFIG_QCOM_IPCC)		+= qcom-ipcc.o
+ 
+ obj-$(CONFIG_APPLE_MAILBOX)	+= apple-mailbox.o
++
++obj-$(CONFIG_SPACEMIT_MAILBOX)	+= spacemit/

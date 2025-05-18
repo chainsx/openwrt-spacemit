@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/rtc/Makefile b/drivers/rtc/Makefile
+--- a/drivers/rtc/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/rtc/Makefile	2025-05-18 01:44:45.996666179 +0800
+@@ -184,3 +184,4 @@
+ obj-$(CONFIG_RTC_DRV_X1205)	+= rtc-x1205.o
+ obj-$(CONFIG_RTC_DRV_XGENE)	+= rtc-xgene.o
+ obj-$(CONFIG_RTC_DRV_ZYNQMP)	+= rtc-zynqmp.o
++obj-$(CONFIG_RTC_DRV_SPT_PMIC) += rtc-spt-pmic.o

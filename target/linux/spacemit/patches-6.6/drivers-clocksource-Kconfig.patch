@@ -1,0 +1,17 @@
+diff -Nuar -r --no-dereference a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+--- a/drivers/clocksource/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/clocksource/Kconfig	2025-05-18 01:44:34.986652519 +0800
+@@ -134,6 +134,13 @@
+ 	help
+ 	  Enables the support for the RDA Micro timer driver.
+ 
++config SPACEMIT_K1X_TIMER
++	bool "Spacemit k1x timer driver" if COMPILE_TEST
++	select CLKSRC_MMIO
++	select TIMER_OF
++	help
++	  Enables the support for the spacemit k1x timer driver.
++
+ config SUN4I_TIMER
+ 	bool "Sun4i timer driver" if COMPILE_TEST
+ 	depends on HAS_IOMEM

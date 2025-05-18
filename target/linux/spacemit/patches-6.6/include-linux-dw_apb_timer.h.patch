@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/include/linux/dw_apb_timer.h b/include/linux/dw_apb_timer.h
+--- a/include/linux/dw_apb_timer.h	2024-11-22 22:38:37.000000000 +0800
++++ b/include/linux/dw_apb_timer.h	2025-05-18 01:44:49.218670159 +0800
+@@ -12,6 +12,7 @@
+ 
+ #include <linux/clockchips.h>
+ #include <linux/clocksource.h>
++#include <linux/spinlock.h>
+ #include <linux/interrupt.h>
+ 
+ #define APBTMRS_REG_SIZE       0x14
+@@ -26,6 +27,7 @@
+ 	struct clock_event_device		ced;
+ 	struct dw_apb_timer			timer;
+ 	void					(*eoi)(struct dw_apb_timer *);
++	raw_spinlock_t				timer_lock;
+ };
+ 
+ struct dw_apb_clocksource {

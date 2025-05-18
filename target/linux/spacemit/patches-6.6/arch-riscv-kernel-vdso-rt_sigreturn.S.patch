@@ -1,0 +1,16 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/vdso/rt_sigreturn.S b/arch/riscv/kernel/vdso/rt_sigreturn.S
+--- a/arch/riscv/kernel/vdso/rt_sigreturn.S	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/vdso/rt_sigreturn.S	2025-05-18 01:44:32.892649909 +0800
+@@ -7,10 +7,10 @@
+ #include <asm/unistd.h>
+ 
+ 	.text
+-ENTRY(__vdso_rt_sigreturn)
++SYM_FUNC_START(__vdso_rt_sigreturn)
+ 	.cfi_startproc
+ 	.cfi_signal_frame
+ 	li a7, __NR_rt_sigreturn
+ 	ecall
+ 	.cfi_endproc
+-ENDPROC(__vdso_rt_sigreturn)
++SYM_FUNC_END(__vdso_rt_sigreturn)

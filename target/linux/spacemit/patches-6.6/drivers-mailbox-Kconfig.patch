@@ -1,0 +1,35 @@
+diff -Nuar -r --no-dereference a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+--- a/drivers/mailbox/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mailbox/Kconfig	2025-05-18 01:44:40.224659030 +0800
+@@ -295,4 +295,31 @@
+ 	  acts as an interrupt controller for receiving interrupts from clients.
+ 	  Say Y here if you want to build this driver.
+ 
++config SPACEMIT_MAILBOX
++	tristate "Spacemit Message Box"
++	depends on SOC_SPACEMIT
++	help
++	  Mailbox implementation for the hardware message box present in
++	  various Spacemit SoCs. This mailbox is used for communication
++	  between the application CPUs and the power management coprocessor.
++
++if SPACEMIT_MAILBOX
++
++config K1PRO_MAILBOX
++	tristate "Spacemit K1pro Message Box"
++	depends on SOC_SPACEMIT
++	help
++	  Mailbox implementation for the hardware message box present in
++	  various Spacemit SoCs. This mailbox is used for communication
++	  between the application CPUs and the power management coprocessor.
++
++config K1X_MAILBOX
++	tristate "Spacemit K1x Message Box"
++	depends on SOC_SPACEMIT
++	help
++	  Mailbox implementation for the hardware message box present in
++	  various Spacemit SoCs. This mailbox is used for communication
++	  between the application CPUs and the power management coprocessor.
++endif
++
+ endif

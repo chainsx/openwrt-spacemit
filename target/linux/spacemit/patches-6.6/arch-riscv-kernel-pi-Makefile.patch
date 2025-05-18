@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/pi/Makefile b/arch/riscv/kernel/pi/Makefile
+--- a/arch/riscv/kernel/pi/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/pi/Makefile	2025-05-18 01:44:32.881649895 +0800
+@@ -9,6 +9,9 @@
+ 		   -fno-asynchronous-unwind-tables -fno-unwind-tables \
+ 		   $(call cc-option,-fno-addrsig)
+ 
++# Disable LTO
++KBUILD_CFLAGS	:= $(filter-out $(CC_FLAGS_LTO), $(KBUILD_CFLAGS))
++
+ KBUILD_CFLAGS	+= -mcmodel=medany
+ 
+ CFLAGS_cmdline_early.o += -D__NO_FORTIFY

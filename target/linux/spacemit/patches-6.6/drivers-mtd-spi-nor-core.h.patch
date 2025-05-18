@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
+--- a/drivers/mtd/spi-nor/core.h	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mtd/spi-nor/core.h	2025-05-18 01:44:41.652660801 +0800
+@@ -647,6 +647,7 @@
+ extern const struct spi_nor_manufacturer spi_nor_winbond;
+ extern const struct spi_nor_manufacturer spi_nor_xilinx;
+ extern const struct spi_nor_manufacturer spi_nor_xmc;
++extern const struct spi_nor_manufacturer spi_nor_fmsh;
+ 
+ extern const struct attribute_group *spi_nor_sysfs_groups[];
+ 

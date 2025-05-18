@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
+--- a/arch/riscv/kernel/vdso/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/vdso/Makefile	2025-05-18 01:44:32.890649907 +0800
+@@ -37,7 +37,7 @@
+ endif
+ 
+ # Disable -pg to prevent insert call site
+-CFLAGS_REMOVE_vgettimeofday.o = $(CC_FLAGS_FTRACE)
++CFLAGS_REMOVE_vgettimeofday.o = $(CC_FLAGS_FTRACE) $(CC_FLAGS_SCS)
+ 
+ # Disable profiling and instrumentation for VDSO code
+ GCOV_PROFILE := n

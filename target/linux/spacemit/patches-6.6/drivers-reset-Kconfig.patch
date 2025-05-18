@@ -1,0 +1,28 @@
+diff -Nuar -r --no-dereference a/drivers/reset/Kconfig b/drivers/reset/Kconfig
+--- a/drivers/reset/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/reset/Kconfig	2025-05-18 01:44:45.979666159 +0800
+@@ -318,6 +318,24 @@
+ 	help
+ 	  This enables the reset controller driver for Xilinx Zynq SoCs.
+ 
++config RESET_K1PRO_SPACEMIT
++	tristate "Reset controller driver for Spacemit K1PRO SoCs"
++	depends on SOC_SPACEMIT_K1PRO
++	help
++	  Support for reset controllers on Spacemit K1PRO SoCs.
++
++config RESET_K1X_SPACEMIT
++	tristate "Reset controller driver for Spacemit K1X SoCs"
++	depends on SOC_SPACEMIT_K1X
++	help
++	  Support for reset controllers on Spacemit K1X SoCs.
++
++config RESET_K1MATRIX_SPACEMIT
++	tristate "Reset controller driver for Spacemit K1MATRIX SoCs"
++	default y
++	help
++	  Support for reset controllers on Spacemit K1MATRIX SoCs.
++
+ source "drivers/reset/starfive/Kconfig"
+ source "drivers/reset/sti/Kconfig"
+ source "drivers/reset/hisilicon/Kconfig"

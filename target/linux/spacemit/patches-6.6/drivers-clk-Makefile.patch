@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/clk/Makefile b/drivers/clk/Makefile
+--- a/drivers/clk/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/clk/Makefile	2025-05-18 01:44:34.614652055 +0800
+@@ -136,3 +136,4 @@
+ obj-y					+= xilinx/
+ obj-$(CONFIG_ARCH_ZYNQ)			+= zynq/
+ obj-$(CONFIG_COMMON_CLK_ZYNQMP)         += zynqmp/
++obj-y					+= spacemit/

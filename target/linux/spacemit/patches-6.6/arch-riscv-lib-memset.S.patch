@@ -1,0 +1,20 @@
+diff -Nuar -r --no-dereference a/arch/riscv/lib/memset.S b/arch/riscv/lib/memset.S
+--- a/arch/riscv/lib/memset.S	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/lib/memset.S	2025-05-18 01:44:32.902649922 +0800
+@@ -8,8 +8,7 @@
+ #include <asm/asm.h>
+ 
+ /* void *memset(void *, int, size_t) */
+-ENTRY(__memset)
+-WEAK(memset)
++SYM_FUNC_START(__memset)
+ 	move t0, a0  /* Preserve return value */
+ 
+ 	/* Defer to byte-oriented fill for small sizes */
+@@ -110,4 +109,5 @@
+ 	bltu t0, a3, 5b
+ 6:
+ 	ret
+-END(__memset)
++SYM_FUNC_END(__memset)
++SYM_FUNC_ALIAS_WEAK(memset, __memset)

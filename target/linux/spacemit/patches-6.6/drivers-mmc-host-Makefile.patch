@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/drivers/mmc/host/Makefile b/drivers/mmc/host/Makefile
+--- a/drivers/mmc/host/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mmc/host/Makefile	2025-05-18 01:44:41.517660634 +0800
+@@ -87,6 +87,9 @@
+ obj-$(CONFIG_MMC_SDHCI_OF_HLWD)		+= sdhci-of-hlwd.o
+ obj-$(CONFIG_MMC_SDHCI_OF_DWCMSHC)	+= sdhci-of-dwcmshc.o
+ obj-$(CONFIG_MMC_SDHCI_OF_SPARX5)	+= sdhci-of-sparx5.o
++obj-$(CONFIG_MMC_SDHCI_OF_K1PRO)	+= sdhci-of-k1pro.o
++obj-$(CONFIG_MMC_SDHCI_OF_K1X)		+= sdhci-of-k1x.o
++obj-$(CONFIG_MMC_SDHCI_OF_K1X_PANIC)+= sdhci-k1-panic.o
+ obj-$(CONFIG_MMC_SDHCI_BCM_KONA)	+= sdhci-bcm-kona.o
+ obj-$(CONFIG_MMC_SDHCI_IPROC)		+= sdhci-iproc.o
+ obj-$(CONFIG_MMC_SDHCI_MSM)		+= sdhci-msm.o

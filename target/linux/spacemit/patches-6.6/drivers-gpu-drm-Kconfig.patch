@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
+--- a/drivers/gpu/drm/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/gpu/drm/Kconfig	2025-05-18 01:44:35.589653269 +0800
+@@ -388,6 +388,10 @@
+ 
+ source "drivers/gpu/drm/sprd/Kconfig"
+ 
++source "drivers/gpu/drm/spacemit/Kconfig"
++
++source "drivers/gpu/drm/nulldisp/Kconfig"
++
+ config DRM_HYPERV
+ 	tristate "DRM Support for Hyper-V synthetic video device"
+ 	depends on DRM && PCI && MMU && HYPERV

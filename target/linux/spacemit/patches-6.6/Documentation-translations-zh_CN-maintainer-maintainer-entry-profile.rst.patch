@@ -1,0 +1,9 @@
+diff -Nuar -r --no-dereference a/Documentation/translations/zh_CN/maintainer/maintainer-entry-profile.rst b/Documentation/translations/zh_CN/maintainer/maintainer-entry-profile.rst
+--- a/Documentation/translations/zh_CN/maintainer/maintainer-entry-profile.rst	2024-11-22 22:38:37.000000000 +0800
++++ b/Documentation/translations/zh_CN/maintainer/maintainer-entry-profile.rst	2025-05-18 01:44:29.092645164 +0800
+@@ -89,4 +89,4 @@
+ 
+    ../doc-guide/maintainer-profile
+    ../../../nvdimm/maintainer-entry-profile
+-   ../../../riscv/patch-acceptance
++   ../../../arch/riscv/patch-acceptance

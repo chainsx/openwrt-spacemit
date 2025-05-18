@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/arch/riscv/include/asm/pci.h b/arch/riscv/include/asm/pci.h
+--- a/arch/riscv/include/asm/pci.h	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/include/asm/pci.h	2025-05-18 01:44:32.838649842 +0800
+@@ -27,6 +27,10 @@
+ #endif
+ #endif /* defined(CONFIG_PCI) && defined(CONFIG_NUMA) */
+ 
++#if defined(CONFIG_SOC_SPACEMIT_K1X)
++#define arch_can_pci_mmap_wc() 1
++#endif
++
+ /* Generic PCI */
+ #include <asm-generic/pci.h>
+ 

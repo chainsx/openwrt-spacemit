@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/tty/serial/Makefile b/drivers/tty/serial/Makefile
+--- a/drivers/tty/serial/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/tty/serial/Makefile	2025-05-18 01:44:47.331667829 +0800
+@@ -28,6 +28,7 @@
+ obj-$(CONFIG_SERIAL_AMBA_PL011) += amba-pl011.o
+ obj-$(CONFIG_SERIAL_CLPS711X) += clps711x.o
+ obj-$(CONFIG_SERIAL_PXA_NON8250) += pxa.o
++obj-$(CONFIG_SERIAL_PXA_SPACEMIT_K1X) += pxa_k1x.o
+ obj-$(CONFIG_SERIAL_SA1100) += sa1100.o
+ obj-$(CONFIG_SERIAL_BCM63XX) += bcm63xx_uart.o
+ obj-$(CONFIG_SERIAL_SAMSUNG) += samsung_tty.o

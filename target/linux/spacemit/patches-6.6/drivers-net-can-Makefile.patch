@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/net/can/Makefile b/drivers/net/can/Makefile
+--- a/drivers/net/can/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/net/can/Makefile	2025-05-18 01:44:41.689660847 +0800
+@@ -31,5 +31,6 @@
+ obj-$(CONFIG_CAN_SUN4I)		+= sun4i_can.o
+ obj-$(CONFIG_CAN_TI_HECC)	+= ti_hecc.o
+ obj-$(CONFIG_CAN_XILINXCAN)	+= xilinx_can.o
++obj-$(CONFIG_IPMS_CAN)          += ipms_canfd.o
+ 
+ subdir-ccflags-$(CONFIG_CAN_DEBUG_DEVICES) += -DDEBUG

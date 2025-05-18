@@ -1,0 +1,19 @@
+diff -Nuar -r --no-dereference a/drivers/video/fbdev/core/fbmem.c b/drivers/video/fbdev/core/fbmem.c
+--- a/drivers/video/fbdev/core/fbmem.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/video/fbdev/core/fbmem.c	2025-05-18 01:44:47.775668377 +0800
+@@ -675,6 +675,7 @@
+ 	}
+ 
+ 	height = fb_logo.logo->height;
++
+ 	if (fb_center_logo)
+ 		height += (yres - fb_logo.logo->height) / 2;
+ 
+@@ -690,6 +691,7 @@
+ 		return 0;
+ 
+ 	count = fb_logo_count < 0 ? num_online_cpus() : fb_logo_count;
++
+ 	y = fb_show_logo_line(info, rotate, fb_logo.logo, 0, count);
+ 	y = fb_show_extra_logos(info, y, rotate);
+ 

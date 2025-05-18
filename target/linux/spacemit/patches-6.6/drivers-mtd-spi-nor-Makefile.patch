@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
+--- a/drivers/mtd/spi-nor/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mtd/spi-nor/Makefile	2025-05-18 01:44:41.649660798 +0800
+@@ -17,6 +17,7 @@
+ spi-nor-objs			+= winbond.o
+ spi-nor-objs			+= xilinx.o
+ spi-nor-objs			+= xmc.o
++spi-nor-objs			+= fmsh.o
+ spi-nor-$(CONFIG_DEBUG_FS)	+= debugfs.o
+ obj-$(CONFIG_MTD_SPI_NOR)	+= spi-nor.o
+ 

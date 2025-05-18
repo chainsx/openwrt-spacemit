@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/drivers/rtc/rtc-sa1100.h b/drivers/rtc/rtc-sa1100.h
+--- a/drivers/rtc/rtc-sa1100.h	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/rtc/rtc-sa1100.h	2025-05-18 01:44:46.034666226 +0800
+@@ -17,6 +17,7 @@
+ 	int			irq_alarm;
+ 	struct rtc_device	*rtc;
+ 	struct clk		*clk;
++	struct reset_control	*reset;
+ };
+ 
+ int sa1100_rtc_init(struct platform_device *pdev, struct sa1100_rtc *info);

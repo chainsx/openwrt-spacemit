@@ -1,0 +1,17 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/vdso/sys_hwprobe.S b/arch/riscv/kernel/vdso/sys_hwprobe.S
+--- a/arch/riscv/kernel/vdso/sys_hwprobe.S	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/vdso/sys_hwprobe.S	2025-05-18 01:44:32.892649909 +0800
+@@ -5,11 +5,11 @@
+ #include <asm/unistd.h>
+ 
+ .text
+-ENTRY(riscv_hwprobe)
++SYM_FUNC_START(riscv_hwprobe)
+ 	.cfi_startproc
+ 	li a7, __NR_riscv_hwprobe
+ 	ecall
+ 	ret
+ 
+ 	.cfi_endproc
+-ENDPROC(riscv_hwprobe)
++SYM_FUNC_END(riscv_hwprobe)

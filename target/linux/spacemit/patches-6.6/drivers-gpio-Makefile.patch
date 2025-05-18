@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/gpio/Makefile b/drivers/gpio/Makefile
+--- a/drivers/gpio/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/gpio/Makefile	2025-05-18 01:44:35.536653203 +0800
+@@ -195,3 +195,4 @@
+ obj-$(CONFIG_GPIO_ZEVIO)		+= gpio-zevio.o
+ obj-$(CONFIG_GPIO_ZYNQ)			+= gpio-zynq.o
+ obj-$(CONFIG_GPIO_ZYNQMP_MODEPIN)	+= gpio-zynqmp-modepin.o
++obj-$(CONFIG_GPIO_K1X)			+= gpio-k1x.o

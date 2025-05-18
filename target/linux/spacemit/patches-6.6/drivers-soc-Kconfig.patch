@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/soc/Kconfig b/drivers/soc/Kconfig
+--- a/drivers/soc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/soc/Kconfig	2025-05-18 01:44:46.502666805 +0800
+@@ -31,5 +31,6 @@
+ source "drivers/soc/ux500/Kconfig"
+ source "drivers/soc/versatile/Kconfig"
+ source "drivers/soc/xilinx/Kconfig"
++source "drivers/soc/spacemit/Kconfig"
+ 
+ endmenu

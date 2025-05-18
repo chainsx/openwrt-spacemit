@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/fs/btrfs/sysfs.c b/fs/btrfs/sysfs.c
+--- a/fs/btrfs/sysfs.c	2024-11-22 22:38:37.000000000 +0800
++++ b/fs/btrfs/sysfs.c	2025-05-18 01:44:48.105668785 +0800
+@@ -636,7 +636,7 @@
+ 
+ #endif
+ 
+-static ssize_t btrfs_show_u64(u64 *value_ptr, spinlock_t *lock, char *buf)
++static noinline ssize_t btrfs_show_u64(u64 *value_ptr, spinlock_t *lock, char *buf)
+ {
+ 	u64 val;
+ 	if (lock)

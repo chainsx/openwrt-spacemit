@@ -1,0 +1,45 @@
+diff -Nuar -r --no-dereference a/kernel/power/hibernate.c b/kernel/power/hibernate.c
+--- a/kernel/power/hibernate.c	2024-11-22 22:38:37.000000000 +0800
++++ b/kernel/power/hibernate.c	2025-05-18 01:44:50.843672162 +0800
+@@ -171,8 +171,13 @@
+ 
+ static int platform_pre_snapshot(int platform_mode)
+ {
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	return (/* platform_mode && */ hibernation_ops) ?
++		hibernation_ops->pre_snapshot() : 0;
++#else
+ 	return (platform_mode && hibernation_ops) ?
+ 		hibernation_ops->pre_snapshot() : 0;
++#endif
+ }
+ 
+ /**
+@@ -201,8 +206,13 @@
+  */
+ static void platform_finish(int platform_mode)
+ {
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	if (/* platform_mode && */ hibernation_ops)
++		hibernation_ops->finish();
++#else
+ 	if (platform_mode && hibernation_ops)
+ 		hibernation_ops->finish();
++#endif
+ }
+ 
+ /**
+@@ -217,8 +227,13 @@
+  */
+ static int platform_pre_restore(int platform_mode)
+ {
++#ifdef CONFIG_SOC_SPACEMIT_K1X
++	return (/* platform_mode && */ hibernation_ops) ?
++		hibernation_ops->pre_restore() : 0;
++#else
+ 	return (platform_mode && hibernation_ops) ?
+ 		hibernation_ops->pre_restore() : 0;
++#endif
+ }
+ 
+ /**

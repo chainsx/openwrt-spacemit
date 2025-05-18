@@ -1,0 +1,26 @@
+diff -Nuar -r --no-dereference a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
+--- a/drivers/input/misc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/input/misc/Kconfig	2025-05-18 01:44:39.902658631 +0800
+@@ -900,6 +900,22 @@
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called hisi_powerkey.
+ 
++config INPUT_SPACEMIT_POWERKEY
++	tristate "Spacemit PMIC pwrkey support"
++	depends on MFD_SPACEMIT_PMIC
++	help
++	  Say Y to enable support for PMIC PWRKEY.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called spacemit-pwrkey.
++
++config HALL_SENSOR_AS1911
++	tristate "Spacemit Hall Sensor Driver"
++	depends on INPUT
++	help
++	  Say Y here if you want to enable the Hall sensor AS1911 driver with
++	  interrupt support.
++
+ config INPUT_RAVE_SP_PWRBUTTON
+ 	tristate "RAVE SP Power button Driver"
+ 	depends on RAVE_SP_CORE

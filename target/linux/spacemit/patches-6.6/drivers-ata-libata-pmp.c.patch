@@ -1,0 +1,16 @@
+diff -Nuar -r --no-dereference a/drivers/ata/libata-pmp.c b/drivers/ata/libata-pmp.c
+--- a/drivers/ata/libata-pmp.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/ata/libata-pmp.c	2025-05-18 01:44:34.368651749 +0800
+@@ -446,10 +446,11 @@
+ 		 * otherwise.  Don't try hard to recover it.
+ 		 */
+ 		ap->pmp_link[ap->nr_pmp_links - 1].flags |= ATA_LFLAG_NO_RETRY;
+-	} else if (vendor == 0x197b && (devid == 0x2352 || devid == 0x0325)) {
++	} else if (vendor == 0x197b && (devid == 0x2352 || devid == 0x0325 || devid == 0x0585)) {
+ 		/*
+ 		 * 0x2352: found in Thermaltake BlackX Duet, jmicron JMB350?
+ 		 * 0x0325: jmicron JMB394.
++		 * 0x0325: jmicron JMB585.
+ 		 */
+ 		ata_for_each_link(link, ap, EDGE) {
+ 			/* SRST breaks detection and disks get misclassified

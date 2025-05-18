@@ -1,0 +1,15 @@
+diff -Nuar -r --no-dereference a/include/linux/swiotlb.h b/include/linux/swiotlb.h
+--- a/include/linux/swiotlb.h	2024-11-22 22:38:37.000000000 +0800
++++ b/include/linux/swiotlb.h	2025-05-18 01:44:49.761670828 +0800
+@@ -23,7 +23,11 @@
+  * must be a power of 2.  What is the appropriate value ?
+  * The complexity of {map,unmap}_single is linearly dependent on this value.
+  */
++#if defined(CONFIG_SOC_SPACEMIT_K1X)
++#define IO_TLB_SEGSIZE	256
++#else
+ #define IO_TLB_SEGSIZE	128
++#endif
+ 
+ /*
+  * log of the size of each IO TLB slab.  The number of slabs is command line

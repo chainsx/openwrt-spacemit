@@ -1,0 +1,16 @@
+diff -Nuar -r --no-dereference a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
+--- a/drivers/usb/host/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/usb/host/Kconfig	2025-05-18 01:44:47.538668085 +0800
+@@ -315,6 +315,12 @@
+ 	  Dova, Armada 370 and Armada XP. See "Support for Marvell EBU
+ 	  on-chip EHCI USB controller" for those.
+ 
++config USB_EHCI_K1X
++	bool "EHCI support for Spacemit k1x USB controller"
++	select USB_EHCI_ROOT_HUB_TT
++	help
++	  Enable support for Spacemit k1x SoC's on-chip EHCI controller.
++
+ config USB_OCTEON_HCD
+ 	tristate "Cavium Networks Octeon USB support"
+ 	depends on CAVIUM_OCTEON_SOC && USB

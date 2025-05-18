@@ -1,0 +1,12 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kvm/vcpu_onereg.c b/arch/riscv/kvm/vcpu_onereg.c
+--- a/arch/riscv/kvm/vcpu_onereg.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kvm/vcpu_onereg.c	2025-05-18 01:44:32.897649915 +0800
+@@ -13,7 +13,7 @@
+ #include <linux/uaccess.h>
+ #include <linux/kvm_host.h>
+ #include <asm/cacheflush.h>
+-#include <asm/hwcap.h>
++#include <asm/cpufeature.h>
+ #include <asm/kvm_vcpu_vector.h>
+ #include <asm/vector.h>
+ 

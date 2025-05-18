@@ -1,0 +1,8 @@
+diff -Nuar -r --no-dereference a/drivers/remoteproc/Makefile b/drivers/remoteproc/Makefile
+--- a/drivers/remoteproc/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/remoteproc/Makefile	2025-05-18 01:44:45.940666110 +0800
+@@ -39,3 +39,4 @@
+ obj-$(CONFIG_TI_K3_DSP_REMOTEPROC)	+= ti_k3_dsp_remoteproc.o
+ obj-$(CONFIG_TI_K3_R5_REMOTEPROC)	+= ti_k3_r5_remoteproc.o
+ obj-$(CONFIG_XLNX_R5_REMOTEPROC)	+= xlnx_r5_remoteproc.o
++obj-y					+= spacemit/

@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+--- a/drivers/regulator/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/regulator/Makefile	2025-05-18 01:44:45.881666037 +0800
+@@ -195,5 +195,6 @@
+ obj-$(CONFIG_REGULATOR_WM8350) += wm8350-regulator.o
+ obj-$(CONFIG_REGULATOR_WM8400) += wm8400-regulator.o
+ obj-$(CONFIG_REGULATOR_WM8994) += wm8994-regulator.o
++obj-$(CONFIG_REGULATOR_SPACEMIT) += spacemit-regulator.o
+ 
+ ccflags-$(CONFIG_REGULATOR_DEBUG) += -DDEBUG

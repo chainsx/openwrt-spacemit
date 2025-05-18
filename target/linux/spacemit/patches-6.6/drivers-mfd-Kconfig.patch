@@ -1,0 +1,20 @@
+diff -Nuar -r --no-dereference a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+--- a/drivers/mfd/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mfd/Kconfig	2025-05-18 01:44:41.326660397 +0800
+@@ -2218,6 +2218,16 @@
+ 	  under it in the device tree. Additional drivers must be enabled in
+ 	  order to use the functionality of the device.
+ 
++config MFD_SPACEMIT_PMIC
++	tristate "Spacemit Power Management IC"
++	depends on I2C && OF
++	depends on SOC_SPACEMIT
++	select MFD_CORE
++	select REGMAP_I2C
++	select REGMAP_IRQ
++	help
++	  Select this option to get support for the SPACEMIT Power Management ICs.
++
+ menu "Multimedia Capabilities Port drivers"
+ 	depends on ARCH_SA1100
+ 

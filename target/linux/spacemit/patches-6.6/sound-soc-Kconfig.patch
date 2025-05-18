@@ -1,0 +1,11 @@
+diff -Nuar -r --no-dereference a/sound/soc/Kconfig b/sound/soc/Kconfig
+--- a/sound/soc/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/sound/soc/Kconfig	2025-05-18 01:44:52.388674065 +0800
+@@ -114,6 +114,7 @@
+ source "sound/soc/ux500/Kconfig"
+ source "sound/soc/xilinx/Kconfig"
+ source "sound/soc/xtensa/Kconfig"
++source "sound/soc/spacemit/Kconfig"
+ 
+ # Supported codecs
+ source "sound/soc/codecs/Kconfig"

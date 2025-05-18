@@ -1,0 +1,9 @@
+diff -Nuar -r --no-dereference a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+--- a/drivers/mfd/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mfd/Makefile	2025-05-18 01:44:41.327660398 +0800
+@@ -282,3 +282,5 @@
+ 
+ obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
+ obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu_spi.o rsmu_core.o
++
++obj-$(CONFIG_MFD_SPACEMIT_PMIC) += spacemit-mfd.o

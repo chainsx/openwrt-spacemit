@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
+--- a/arch/riscv/boot/dts/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/boot/dts/Makefile	2025-05-18 01:44:32.774649762 +0800
+@@ -6,5 +6,6 @@
+ subdir-y += sifive
+ subdir-y += starfive
+ subdir-y += thead
++subdir-y += spacemit
+ 
+ obj-$(CONFIG_BUILTIN_DTB) := $(addsuffix /, $(subdir-y))

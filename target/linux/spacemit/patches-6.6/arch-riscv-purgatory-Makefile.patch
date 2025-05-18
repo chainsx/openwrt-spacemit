@@ -1,0 +1,14 @@
+diff -Nuar -r --no-dereference a/arch/riscv/purgatory/Makefile b/arch/riscv/purgatory/Makefile
+--- a/arch/riscv/purgatory/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/purgatory/Makefile	2025-05-18 01:44:32.911649933 +0800
+@@ -81,6 +81,10 @@
+ PURGATORY_CFLAGS_REMOVE		+= $(CC_FLAGS_CFI)
+ endif
+ 
++ifdef CONFIG_SHADOW_CALL_STACK
++PURGATORY_CFLAGS_REMOVE		+= $(CC_FLAGS_SCS)
++endif
++
+ CFLAGS_REMOVE_purgatory.o	+= $(PURGATORY_CFLAGS_REMOVE)
+ CFLAGS_purgatory.o		+= $(PURGATORY_CFLAGS)
+ 

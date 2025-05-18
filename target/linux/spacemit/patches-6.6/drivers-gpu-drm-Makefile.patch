@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
+--- a/drivers/gpu/drm/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/gpu/drm/Makefile	2025-05-18 01:44:35.590653271 +0800
+@@ -198,3 +198,5 @@
+ obj-y			+= solomon/
+ obj-$(CONFIG_DRM_SPRD) += sprd/
+ obj-$(CONFIG_DRM_LOONGSON) += loongson/
++obj-$(CONFIG_DRM_SPACEMIT) += spacemit/
++obj-$(CONFIG_POWERVR_ROGUE_NULLDRMDISP) += nulldisp/
+\ 文件末尾没有换行符

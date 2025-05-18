@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
+--- a/drivers/input/misc/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/input/misc/Makefile	2025-05-18 01:44:39.903658632 +0800
+@@ -90,3 +90,5 @@
+ obj-$(CONFIG_INPUT_XEN_KBDDEV_FRONTEND)	+= xen-kbdfront.o
+ obj-$(CONFIG_INPUT_YEALINK)		+= yealink.o
+ obj-$(CONFIG_INPUT_IDEAPAD_SLIDEBAR)	+= ideapad_slidebar.o
++obj-$(CONFIG_INPUT_SPACEMIT_POWERKEY)	+= spacemit-pwrkey.o
++obj-$(CONFIG_HALL_SENSOR_AS1911)	+= hall_sensor_as1911.o
+\ 文件末尾没有换行符

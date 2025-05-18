@@ -1,0 +1,15 @@
+diff -Nuar -r --no-dereference a/lib/scatterlist.c b/lib/scatterlist.c
+--- a/lib/scatterlist.c	2024-11-22 22:38:37.000000000 +0800
++++ b/lib/scatterlist.c	2025-05-18 01:44:50.942672284 +0800
+@@ -629,7 +629,11 @@
+ 		nalloc++;
+ 	}
+ 	sgl = kmalloc_array(nalloc, sizeof(struct scatterlist),
++#if defined(CONFIG_SOC_SPACEMIT_K1X)
++			    gfp & ~(GFP_DMA | GFP_DMA32));
++#else
+ 			    gfp & ~GFP_DMA);
++#endif
+ 	if (!sgl)
+ 		return NULL;
+ 

@@ -1,0 +1,10 @@
+diff -Nuar -r --no-dereference a/drivers/thermal/Makefile b/drivers/thermal/Makefile
+--- a/drivers/thermal/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/thermal/Makefile	2025-05-18 01:44:47.244667722 +0800
+@@ -64,3 +64,5 @@
+ obj-$(CONFIG_SPRD_THERMAL)	+= sprd_thermal.o
+ obj-$(CONFIG_KHADAS_MCU_FAN_THERMAL)	+= khadas_mcu_fan.o
+ obj-$(CONFIG_LOONGSON2_THERMAL)	+= loongson2_thermal.o
++obj-$(CONFIG_K1X_THERMAL) += k1x-thermal.o
++obj-$(CONFIG_CPU_HOTPLUG_THERMAL) += hotplug_cooling.o
+\ 文件末尾没有换行符

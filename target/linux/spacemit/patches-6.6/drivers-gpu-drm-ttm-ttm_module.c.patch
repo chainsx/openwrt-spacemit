@@ -1,0 +1,13 @@
+diff -Nuar -r --no-dereference a/drivers/gpu/drm/ttm/ttm_module.c b/drivers/gpu/drm/ttm/ttm_module.c
+--- a/drivers/gpu/drm/ttm/ttm_module.c	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/gpu/drm/ttm/ttm_module.c	2025-05-18 01:44:39.028657546 +0800
+@@ -74,7 +74,8 @@
+ #endif /* CONFIG_UML */
+ #endif /* __i386__ || __x86_64__ */
+ #if defined(__ia64__) || defined(__arm__) || defined(__aarch64__) || \
+-	defined(__powerpc__) || defined(__mips__) || defined(__loongarch__)
++	defined(__powerpc__) || defined(__mips__) || defined(__loongarch__) \
++	|| defined(__riscv)
+ 	if (caching == ttm_write_combined)
+ 		tmp = pgprot_writecombine(tmp);
+ 	else

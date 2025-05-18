@@ -1,0 +1,26 @@
+diff -Nuar -r --no-dereference a/arch/riscv/kernel/cpu-hotplug.c b/arch/riscv/kernel/cpu-hotplug.c
+--- a/arch/riscv/kernel/cpu-hotplug.c	2024-11-22 22:38:37.000000000 +0800
++++ b/arch/riscv/kernel/cpu-hotplug.c	2025-05-18 01:44:32.873649886 +0800
+@@ -15,6 +15,7 @@
+ #include <asm/cpu_ops.h>
+ #include <asm/numa.h>
+ #include <asm/smp.h>
++#include <asm/sbi.h>
+ 
+ bool cpu_has_hotplug(unsigned int cpu)
+ {
+@@ -75,8 +76,14 @@
+ {
+ 	idle_task_exit();
+ 
++#if defined(CONFIG_SOC_SPACEMIT_K1PRO) || defined(CONFIG_SOC_SPACEMIT_K1X)
++	sbi_flush_local_dcache_all();
++#endif
+ 	cpuhp_ap_report_dead();
+ 
++#if defined(CONFIG_SOC_SPACEMIT_K1PRO) || defined(CONFIG_SOC_SPACEMIT_K1X)
++	sbi_flush_local_dcache_all();
++#endif
+ 	cpu_ops[smp_processor_id()]->cpu_stop();
+ 	/* It should never reach here */
+ 	BUG();

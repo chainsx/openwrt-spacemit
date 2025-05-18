@@ -1,0 +1,9 @@
+diff -Nuar -r --no-dereference a/drivers/net/ethernet/realtek/Makefile b/drivers/net/ethernet/realtek/Makefile
+--- a/drivers/net/ethernet/realtek/Makefile	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/net/ethernet/realtek/Makefile	2025-05-18 01:44:42.765662181 +0800
+@@ -8,3 +8,5 @@
+ obj-$(CONFIG_ATP) += atp.o
+ r8169-objs += r8169_main.o r8169_firmware.o r8169_phy_config.o
+ obj-$(CONFIG_R8169) += r8169.o
++obj-$(CONFIG_R8125) += r8125/
++obj-$(CONFIG_R8168) += r8168/

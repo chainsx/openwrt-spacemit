@@ -1,0 +1,53 @@
+diff -Nuar -r --no-dereference a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
+--- a/drivers/mmc/host/Kconfig	2024-11-22 22:38:37.000000000 +0800
++++ b/drivers/mmc/host/Kconfig	2025-05-18 01:44:41.517660634 +0800
+@@ -251,6 +251,44 @@
+ 
+ 	  If unsure, say N.
+ 
++config MMC_SDHCI_OF_K1PRO
++	tristate "SDHCI OF support for the Spacemit K1PRO SDHCI controllers"
++	depends on MMC_SDHCI_PLTFM
++	depends on OF
++	depends on COMMON_CLK
++	help
++	  This selects the Secure Digital Host Controller Interface (SDHCI)
++	  found in the Spacemit SoC K1PRO.
++
++	  If you have a controller with this interface, say Y or M here.
++
++	  If unsure, say N.
++
++config MMC_SDHCI_OF_K1X
++	tristate "SDHCI OF support for the Spacemit K1X SDHCI controllers"
++	depends on MMC_SDHCI_PLTFM
++	depends on OF
++	depends on COMMON_CLK
++	help
++	  This selects the Secure Digital Host Controller Interface (SDHCI)
++	  found in the Spacemit SoC K1X.
++
++	  If you have a controller with this interface, say Y or M here.
++
++	  If unsure, say N.
++
++config MMC_SDHCI_OF_K1X_PANIC
++	tristate "SDHCI OF support for the Spacemit K1X SDHCI PANIC WIRTE"
++	depends on MMC_SDHCI_OF_K1X
++	depends on PSTORE_BLK
++	help
++	  This selects the Secure Digital Host Controller Interface (SDHCI)
++	  found in the Spacemit SoC K1X panic write for pstore.
++
++	  If you have a controller with this interface, say Y or M here.
++
++	  If unsure, say N.
++
+ config MMC_SDHCI_CADENCE
+ 	tristate "SDHCI support for the Cadence SD/SDIO/eMMC controller"
+ 	depends on MMC_SDHCI_PLTFM
+@@ -1071,3 +1109,4 @@
+ 	  module will be called litex_mmc.
+ 
+ 	  If unsure, say N.
++
