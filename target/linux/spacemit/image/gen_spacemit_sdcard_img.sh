@@ -17,15 +17,6 @@ set -e
 OUTPUT="$1"
 IMGS_DIR=$(dirname $1)
 
-if echo "$1" |grep -q '\.zip$'; then
-    OUTPUT=$(echo "$1" |sed 's/\.zip$//')-sdcard.img
-    echo "new sdcard image name:$OUTPUT"
-else
-    OUTPUT="$1-sdcard.img"
-    echo "set image name to sdcard.img"
-fi
-
-
 #Bootinfo contains only the first 80 bytes of valid data.
 BOOTINFO=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "bootinfo") | .image' "$4" | sed 's/["]//g')
 

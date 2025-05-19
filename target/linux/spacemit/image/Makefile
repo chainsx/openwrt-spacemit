@@ -14,12 +14,9 @@ define Build/boot-common
 	rm -f $@.boot
 	mkfs.fat -n boot -C $@.boot $(BOOTFS_SIZE_KB)
 	
-	#mcopy -i $@.boot $(KDIR_TMP)/$(KERNEL_INITRAMFS_IMAGE) ::$(KERNEL_IMG)
 	mcopy -i $@.boot $(IMAGE_KERNEL) ::$(KERNEL_IMG)
 	mcopy -i $@.boot -s extlinux ::/
 	$(foreach dts,$(shell echo $(DEVICE_DTS)),mcopy -i $@.boot $(LINUX_DIR)/arch/riscv/boot/dts/$(DEVICE_DTS).dtb ::spacemit.dtb;)
-
-	#cp -rf $(STAGING_DIR_IMAGE)/* $(KDIR_TMP)/
 	
 	rm -rf $(KDIR_TMP)/factory
 	rm -f $(KDIR_TMP)/env.bin \
@@ -35,13 +32,9 @@ define Build/boot-common
 endef
 
 define Build/sdcard-img
-	#./gen_spacemit_sdcard_img.sh $@ \
-	#        $@.boot $(IMAGE_ROOTFS) \
-	#        $(CONFIG_TARGET_KERNEL_PARTSIZE) \
-	#        $(CONFIG_TARGET_ROOTFS_PARTSIZE)
 	./gen_spacemit_sdcard_img.sh $@ $@.boot $(IMAGE_ROOTFS) \
 		$(PARTITION_FILE) $(CONFIG_TARGET_ROOTFS_PARTSIZE)
-	cp $(KDIR_TMP)/*sdcard.img $(BIN_DIR)
+	#cp $(KDIR_TMP)/*sdcard.img $(BIN_DIR)
 
 endef
 
@@ -50,8 +43,8 @@ define Device/Default
   KERNEL_NAME := Image
   KERNEL_IMG := Image.itb
   KERNEL := kernel-bin | fit none
-  IMAGES := sdcard.img
-  IMAGE/sdcard.img := boot-common | sdcard-img
+  IMAGES := sdcard.img.gz
+  IMAGE/sdcard.img.gz := $(KERNEL_IMG) | boot-common | sdcard-img | gzip | append-metadata
 endef
 
 include $(SUBTARGET).mk

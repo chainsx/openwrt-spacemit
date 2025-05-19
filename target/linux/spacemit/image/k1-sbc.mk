@@ -4,14 +4,44 @@
 
 define Device/MUSE-Pi-Pro
   DEVICE_VENDOR := Spacemit
-  DEVICE_MODEL :=k1-x pro board
+  DEVICE_MODEL :=MUSE Pi Pro
   DEVICE_DTS := spacemit/k1-x_MUSE-Pi-Pro
   SOC := KeyStone
-  KERNEL_NAME := Image
-  KERNEL_IMG := Image.itb
-  KERNEL := kernel-bin | fit none
-  IMAGE := $(KERNEL_IMG) | boot-common | sdcard-img
-  DEVICE_PACKAGES := kmod-rtl8852bs
+  DEVICE_PACKAGES := kmod-rtl8852bs wpad
 endef
 TARGET_DEVICES += MUSE-Pi-Pro
 
+define Device/MUSE-Pi
+  DEVICE_VENDOR := Spacemit
+  DEVICE_MODEL :=MUSE Pi
+  DEVICE_DTS := spacemit/k1-x_MUSE-Pi
+  SOC := KeyStone
+  DEVICE_PACKAGES := kmod-rtl8852bs wpad
+endef
+TARGET_DEVICES += MUSE-Pi
+
+define Device/LicheePi-3H
+  DEVICE_VENDOR := Spacemit
+  DEVICE_MODEL :=LicheePi 3H
+  DEVICE_DTS := spacemit/k1-x_lpi3a
+  SOC := KeyStone
+endef
+TARGET_DEVICES += LicheePi-3H
+
+define Device/DEB1
+  DEVICE_VENDOR := Spacemit
+  DEVICE_MODEL :=k1-x deb1 board
+  DEVICE_DTS := spacemit/k1-x_deb1
+  SOC := KeyStone
+  DEVICE_PACKAGES := kmod-rtl8852bs wpad
+endef
+TARGET_DEVICES += DEB1
+
+define Device/DEB2
+  DEVICE_VENDOR := Spacemit
+  DEVICE_MODEL :=k1-x deb2 board
+  DEVICE_DTS := spacemit/k1-x_deb2
+  SOC := KeyStone
+  DEVICE_PACKAGES := kmod-rtl8852bs wpad
+endef
+TARGET_DEVICES += DEB2
