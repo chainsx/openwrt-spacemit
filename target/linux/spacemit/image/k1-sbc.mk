@@ -20,13 +20,14 @@ define Device/MUSE-Pi
 endef
 TARGET_DEVICES += MUSE-Pi
 
-define Device/LicheePi-3H
+define Device/LicheePi-3A
   DEVICE_VENDOR := Spacemit
-  DEVICE_MODEL :=LicheePi 3H
+  DEVICE_MODEL :=LicheePi 3A
   DEVICE_DTS := spacemit/k1-x_lpi3a
+  DEVICE_PACKAGES := kmod-aic8800s wpad
   SOC := KeyStone
 endef
-TARGET_DEVICES += LicheePi-3H
+TARGET_DEVICES += LicheePi-3A
 
 define Device/DEB1
   DEVICE_VENDOR := Spacemit

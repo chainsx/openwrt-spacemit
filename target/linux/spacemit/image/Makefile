@@ -34,7 +34,6 @@ endef
 define Build/sdcard-img
 	./gen_spacemit_sdcard_img.sh $@ $@.boot $(IMAGE_ROOTFS) \
 		$(PARTITION_FILE) $(CONFIG_TARGET_ROOTFS_PARTSIZE)
-	#cp $(KDIR_TMP)/*sdcard.img $(BIN_DIR)
 
 endef
 
