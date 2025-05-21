@@ -8,39 +8,35 @@ echo "gen sdcard image print"
 #set -ex
 set -e
 [ $# -eq 5 ] || {
-    echo "SYNTAX: $0 <file> <partition_table json file> "
+    echo "SYNTAX: $0 <file> <boot image> <rootfs image> <bootfs size> <rootfs size>"
     exit 1
 }
 
-#why openWRT do not use genimage? i have no idea
-#To be compatible with buildroot which use genimage, a conversion is made here.
 OUTPUT="$1"
 IMGS_DIR=$(dirname $1)
 
 #Bootinfo contains only the first 80 bytes of valid data.
-BOOTINFO=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "bootinfo") | .image' "$4" | sed 's/["]//g')
+BOOTINFO=${IMGS_DIR}/factory/bootinfo_sd.bin
 
-FSBL=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "fsbl") | .image' "$4" | sed 's/["]//g')
-FSBL_SIZE=$(jq '.partitions[] | select(.name == "fsbl") | .size' "$4" | sed 's/["kK]//g') 
-FSBL_OFFSET=$(jq '.partitions[] | select(.name == "fsbl") | .offset' "$4" | sed 's/["kK]//g') 
+FSBL=${IMGS_DIR}/factory/FSBL.bin
+FSBL_SIZE=256
+FSBL_OFFSET=128
 
 #if flash env.bin is optional, but env part must be fixed offset at 512k
-UENV=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "env") | .image' "$4" | sed 's/["]//g')
-UENV_SIZE=$(jq '.partitions[] | select(.name == "env") | .size' "$4" | sed 's/["kK]//g')
-UENV_OFFSET=$(jq '.partitions[] | select(.name == "env") | .offset' "$4" | sed 's/["kK]//g')
+UENV=${IMGS_DIR}/env.bin
+UENV_SIZE=64
+UENV_OFFSET=384
 
-OPENSBI=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "opensbi") | .image' "$4" | sed 's/["]//g')
-OPENSBI_SIZE=$(jq '.partitions[] | select(.name == "opensbi") | .size' "$4" | sed 's/["kK]//g')
+OPENSBI=${IMGS_DIR}/fw_dynamic.itb
+OPENSBI_SIZE=384
 
-UBOOT=${IMGS_DIR}/$(jq '.partitions[] | select(.name == "uboot") | .image' "$4" | sed 's/["]//g')
-UBOOT_SIZE=$(jq '.partitions[] | select(.name == "uboot") | .size' "$4" | sed 's/["mM]//g')
+UBOOT=${IMGS_DIR}/u-boot.itb
+UBOOT_SIZE=2
 
 BOOTFS="$2"
-#${IMGS_DIR}/$(jq '.partitions[] | select(.name == "bootfs") | .image' "$2" | sed 's/["]//g')
-BOOTFS_SIZE=$(jq '.partitions[] | select(.name == "bootfs") | .size' "$4" | sed 's/["mM]//g')
+BOOTFS_SIZE=$4
 
 ROOTFS="$3"
-#${IMGS_DIR}/$(jq '.partitions[] | select(.name == "rootfs") | .image' "$2" | sed 's/["]//g')
 
 ROOTFS_SIZE=$5
 head=4

@@ -5,9 +5,7 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/image.mk
 
-PARTITION_FILE=$(PWD)/image/partition_tables/partition_universal.json
-BOOTFS_SIZE := $(shell jq -r '.partitions[] | select(.name=="bootfs") | .size' $(PARTITION_FILE))
-BOOTFS_SIZE_KB := $(shell echo "$(BOOTFS_SIZE)" | sed 's/M/*1024/' | bc)
+BOOTFS_SIZE_KB := $(shell echo "$(CONFIG_TARGET_KERNEL_PARTSIZE)*1024" | bc)
 
 KERNEL_LOADADDR:=0x1400000
 define Build/boot-common
@@ -33,7 +31,7 @@ endef
 
 define Build/sdcard-img
 	./gen_spacemit_sdcard_img.sh $@ $@.boot $(IMAGE_ROOTFS) \
-		$(PARTITION_FILE) $(CONFIG_TARGET_ROOTFS_PARTSIZE)
+		$(CONFIG_TARGET_KERNEL_PARTSIZE) $(CONFIG_TARGET_ROOTFS_PARTSIZE)
 
 endef
 
